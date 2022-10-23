@@ -1,0 +1,32 @@
+.conteiner {
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+img {
+    width: 300px;
+}
+
+input {
+    border: 2px solid #1A365F;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+button {
+    background: #F1BC00;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    color: white;
+}
