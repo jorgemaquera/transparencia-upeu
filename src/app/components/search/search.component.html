@@ -56,8 +56,7 @@
         mat-table
         [dataSource]="datasource"
         matSort
-        (matSortChange)="announceSortChange($event)"
-      >
+        (matSortChange)="announceSortChange($event)">
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
             Nombre de documento
