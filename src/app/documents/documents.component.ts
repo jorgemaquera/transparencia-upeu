@@ -5,16 +5,16 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 const data: any[] = [
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '13/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '12/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '11/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '10/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '10/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '10/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '09/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '09/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '07/07/2022', actions: 'view' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '01/07/2022', actions: 'view' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '13/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '12/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '11/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '10/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '10/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '10/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '09/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '09/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '07/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '01/07/2022', state: 'Vigente', actions: 'edit&delete' },
 ];
 
 @Component({
@@ -23,7 +23,7 @@ const data: any[] = [
   styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent implements OnInit, AfterViewInit {
-  columns: string[] = ['name', 'type', 'date', 'actions'];
+  columns: string[] = ['name', 'type', 'date', 'state', 'actions'];
   datasource = new MatTableDataSource<any>(data);;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

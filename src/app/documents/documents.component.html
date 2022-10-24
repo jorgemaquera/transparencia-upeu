@@ -7,13 +7,11 @@
     </div>
   </div>
 </div>
-<div class="search-container">
-  <input type="search" placeholder="Buscar documento" class="field" />
-  <div class="icons-container">
-    <div class="icon-search"></div>
-  </div>
+<div class="sub-header">
+  <h2 class="documents-title">Documentos</h2>
+  <button class="btn-add-document">Agregar documento</button>
 </div>
-<h4 class="results">11 Resultados encontrados</h4>
+
 <div class="container">
   <div class="row">
     <div class="filters">
@@ -69,11 +67,18 @@
             <div class="cell">{{element.date}}</div>
           </td>
         </ng-container>
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell">{{element.state}}</div>
+          </td>
+        </ng-container>
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
           <td mat-cell *matCellDef="let element">
-            <div *ngIf="element.actions.includes('view')">
-              <button mat-mini-fab class="btn-view-doc"><img src="assets/svg/view.svg"></button>
+            <div *ngIf="element.actions.includes('edit')">
+              <button mat-mini-fab class="btn-edit-doc"><img src="assets/svg/edit.svg"></button>
+              <button mat-mini-fab class="btn-delete-doc"><img src="assets/svg/delete.svg"></button>
             </div>
           </td>
         </ng-container>
