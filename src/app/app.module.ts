@@ -10,24 +10,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DocumentsComponent } from './documents/documents.component';
+import { MatSliderModule } from '@angular/material/slider';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DocumentsComponent,
     SearchComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatSliderModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
