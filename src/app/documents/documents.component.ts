@@ -5,26 +5,86 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 const data: any[] = [
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '13/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '12/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '11/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '10/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '10/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '10/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '09/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '09/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Resolución', date: '07/07/2022', state: 'Vigente', actions: 'edit&delete' },
-  { name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', type: 'Acta', date: '01/07/2022', state: 'Vigente', actions: 'edit&delete' },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Resolución',
+    date: '13/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Acta',
+    date: '12/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Acta',
+    date: '11/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Resolución',
+    date: '10/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Acta',
+    date: '10/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Resolución',
+    date: '10/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Acta',
+    date: '09/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Acta',
+    date: '09/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Resolución',
+    date: '07/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
+  {
+    name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    type: 'Acta',
+    date: '01/07/2022',
+    state: 'Vigente',
+    actions: 'edit&delete',
+  },
 ];
 
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.css']
+  styleUrls: ['./documents.component.css'],
 })
 export class DocumentsComponent implements OnInit, AfterViewInit {
   columns: string[] = ['name', 'type', 'date', 'state', 'actions'];
-  datasource = new MatTableDataSource<any>(data);;
+  datasource = new MatTableDataSource<any>(data);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -36,11 +96,11 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
 
   constructor(
     public matPaginatorIntl: MatPaginatorIntl,
-    private liveAnnouncer: LiveAnnouncer,
-  ) { }
+    private liveAnnouncer: LiveAnnouncer
+  ) {}
 
   ngOnInit(): void {
-    this.matPaginatorIntl.itemsPerPageLabel = "Resultados";
+    this.matPaginatorIntl.itemsPerPageLabel = 'Resultados';
     this.matPaginatorIntl.getRangeLabel;
   }
 

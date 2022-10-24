@@ -1,6 +1,6 @@
 /* Header Styles */
 .header {
-  background-color: #1A365E;
+  background-color: #1a365e;
   padding: 1.3% 4%;
 }
 
@@ -9,7 +9,7 @@
   font-size: 32px;
   line-height: 35px;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .header-subtitle {
@@ -37,7 +37,7 @@
 
 /* Search Input Styles */
 .search-container {
-  background-color: #1A365E;
+  background-color: #1a365e;
   padding: 1.3% 4%;
 }
 
@@ -45,7 +45,8 @@
   margin: 0 auto;
 
   border: none;
-  background: rgba(255, 255, 255, 0.14) url(/assets/svg/search.svg) no-repeat center;
+  background: rgba(255, 255, 255, 0.14) url(/assets/svg/search.svg) no-repeat
+    center;
   background-position: right center;
   background-origin: content-box;
   display: block;
@@ -58,7 +59,7 @@
 
   outline: none;
 
-  color: #FFF;
+  color: #fff;
 }
 
 .field::placeholder {
@@ -72,7 +73,7 @@
 
 .results {
   font-size: 36px;
-  color: #1A365E;
+  color: #1a365e;
   margin: 0;
   font-family: poppins;
   padding: 2% 4% 0 4%;
@@ -87,31 +88,34 @@
   font-family: poppins;
   font-size: 40px;
   margin: 0 0 7% 0;
-  color: #1A365F;
+  color: #1a365f;
 }
 
 .filters-options {
   font-family: poppins;
   font-size: 16px;
-  color: #1A365F;
+  color: #1a365f;
   margin: 0;
 }
 
-::ng-deep .mat-checkbox-checked .mat-checkbox-background, 
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
 .mat-checkbox-indeterminate .mat-checkbox-background {
-  background-color: #F1BC00 !important;
+  background-color: #f1bc00 !important;
   border-radius: 4px !important;
   border-width: 3px !important;
 }
 
-::ng-deep .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
-  background-color: #F1BC00 !important;
+::ng-deep
+  .mat-checkbox:not(.mat-checkbox-disabled)
+  .mat-checkbox-ripple
+  .mat-ripple-element {
+  background-color: #f1bc00 !important;
   border-radius: 4px !important;
   border-width: 3px !important;
 }
 
-::ng-deep .mat-checkbox-frame { 
-  border-color: #B0B1B6;
+::ng-deep .mat-checkbox-frame {
+  border-color: #b0b1b6;
   border-radius: 4px !important;
   border-width: 3px !important;
 }
@@ -119,7 +123,7 @@
 .filter-checkbox {
   font-family: poppins;
   font-size: 15px;
-  color: #4F4F4F;
+  color: #4f4f4f;
   margin: 3% 0%;
 }
 
@@ -139,14 +143,14 @@ li {
   background-color: inherit;
   font-size: 12px;
   cursor: pointer;
-  color: #1A365F;
+  color: #1a365f;
   font-family: poppins;
   margin: 0 0 5% 0;
   padding: 0;
 }
 
 .arrow-down {
-  border: solid #1A365E;
+  border: solid #1a365e;
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 3px;
@@ -157,26 +161,27 @@ li {
 
 .btn-apply-filters {
   border: none;
-  background-color: #F1BC00;
+  background-color: #f1bc00;
   border-radius: 10px;
   width: 100%;
   height: 32px;
   margin-top: 7%;
   font-family: poppins;
   font-size: 20px;
-  color: #FFF;
+  color: #fff;
 }
 
 /* Table Styles */
 
-.docs-table, table {
+.docs-table,
+table {
   width: 100%;
   font-family: poppins;
   margin-left: 1%;
 }
 
 th {
-  color: #1A365E;
+  color: #1a365e;
   font-size: 15px;
 }
 
@@ -191,7 +196,7 @@ tr {
 }
 
 .btn-view-doc {
-  background-color: #F1BC00;
+  background-color: #f1bc00;
 }
 
 .mat-header-cell {
@@ -199,7 +204,7 @@ tr {
 }
 
 .mat-cell {
-  border-bottom: 3px solid #1A365F;
+  border-bottom: 3px solid #1a365f;
 }
 
 .mat-column-actions {

@@ -1,9 +1,11 @@
 <div class="header">
   <div class="row">
-    <img class="logo" src="assets/images/logo.png" height="35px">
+    <img class="logo" src="assets/images/logo.png" height="35px" />
     <div class="titles">
       <div class="header-title">Portal de transparencia</div>
-      <div class="header-subtitle">Escuela profesional de Ingeniería de sistemas</div>
+      <div class="header-subtitle">
+        Escuela profesional de Ingeniería de sistemas
+      </div>
     </div>
   </div>
 </div>
@@ -50,35 +52,46 @@
     </div>
 
     <div class="mat-elevation-z0 docs-table">
-      <table mat-table [dataSource]="datasource" matSort (matSortChange)="announceSortChange($event)">
+      <table
+        mat-table
+        [dataSource]="datasource"
+        matSort
+        (matSortChange)="announceSortChange($event)"
+      >
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre de documento</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Nombre de documento
+          </th>
           <td mat-cell *matCellDef="let element">
-            <div class="cell">{{element.name}}</div>
+            <div class="cell">{{ element.name }}</div>
           </td>
         </ng-container>
         <ng-container matColumnDef="type">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
           <td mat-cell *matCellDef="let element">
-            <div class="cell">{{element.type}}</div>
+            <div class="cell">{{ element.type }}</div>
           </td>
         </ng-container>
         <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de creación</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Fecha de creación
+          </th>
           <td mat-cell *matCellDef="let element">
-            <div class="cell">{{element.date}}</div>
+            <div class="cell">{{ element.date }}</div>
           </td>
         </ng-container>
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
           <td mat-cell *matCellDef="let element">
             <div *ngIf="element.actions.includes('view')">
-              <button mat-mini-fab class="btn-view-doc"><img src="assets/svg/view.svg"></button>
+              <button mat-mini-fab class="btn-view-doc">
+                <img src="assets/svg/view.svg" />
+              </button>
             </div>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
       </table>
       <mat-paginator pageSize="6"></mat-paginator>
     </div>

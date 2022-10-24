@@ -8,21 +8,19 @@ const routes: Routes = [
   {
     path: '',
     component: SearchComponent,
-  }
-  ,
+  },
   {
-    path: "login",
-    component: LoginComponent
-  }
-  , 
+    path: 'login',
+    component: LoginComponent,
+  },
   {
-    path: "documents",
+    path: 'documents',
     component: DocumentsComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
