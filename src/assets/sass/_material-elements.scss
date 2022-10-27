@@ -1,0 +1,208 @@
+
+.mat-snack-bar-container {
+    //border-radius: $buttons-radius !important;
+}
+
+
+.mat-list-base .mat-list-item .mat-list-text>*, .mat-list-base .mat-list-option .mat-list-text>* {
+    font-weight: 500 !important;
+}
+
+.mat-raised-button {
+    //line-height: 34px !important;
+}
+
+.mat-stroked-button {
+    //line-height: 32px !important;
+    //height: 34px !important;
+}
+
+.mat-stroked-button,
+.mat-flat-button,
+.mat-raised-button,
+.mat-button {
+    //line-height: 34px !important;
+}
+
+.mat-button, .mat-flat-button, .mat-stroked-button, .mat-raised-button {
+    //border-radius: $buttons-radius !important;
+}
+
+.mat-raised-button:not([class*=mat-elevation-z]) {
+    //box-shadow: $box-shadow !important;
+}
+
+
+.mat-mini-fab {
+    box-shadow: none !important;
+}
+
+.mat-progress-bar {
+    border-radius: 2px !important;
+}
+
+.mat-progress-inverse.mat-progress-bar .mat-progress-bar-buffer {
+    background-color: #edeff2 !important;
+}
+
+.mat-progress-inverse-fancy.mat-progress-bar .mat-progress-bar-buffer {
+    background-color: #fff !important;
+}
+
+.bordered-list mat-list-item {
+    cursor: pointer;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.bordered-list mat-list-item:focus {
+    outline: 0;
+}
+
+.mat-menu-panel {
+    max-width: none !important;
+}
+
+.mat-menu-panel,
+.mat-select-panel {
+    border-radius: $border-radius !important;
+}
+
+.mat-menu-item {
+    // line-height: 34px !important;
+    // height: 34px !important;
+}
+
+.material-icons {
+    font-size: 20px !important;
+}
+
+// .mat-card {
+//     border-radius: $border-radius !important;
+//     margin-bottom: 15px;
+// }
+
+.mat-dialog-container {
+    border-radius: $border-radius !important;
+}
+
+.settings-dialog-container .mat-dialog-container {
+    padding: 0 0 24px 0;
+    border-radius: 20px !important;
+    overflow-x: hidden;
+    min-width: 500px;
+}
+
+.mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+    align-items: center !important;
+}
+
+.mat-expansion-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.mat-button-focus-overlay {
+    //border-radius: $buttons-radius !important;
+}
+
+button[disabled] .alert-text span {
+    opacity: .2;
+}
+
+.alert-text,
+.alert-text .mat-icon {
+    color: #f44336 !important;
+}
+
+.mat-header-cell {
+    padding: 0 16px !important;
+}
+
+.mat-cell {
+    padding: 0 16px !important;
+    vertical-align: top;
+    .post-checkbox-list {
+        padding-left: 24px;
+    }
+    .row-actions {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-left: auto;
+    }
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-table {
+    /*max-height: 450px;*/
+    .mat-cell {
+        overflow: visible;
+    }
+    .mat-column-select {
+        overflow: visible;
+    }
+}
+
+.checkboxCell{
+    flex: 0 0 70px !important;
+}
+
+.mat-elevation-z {
+    box-shadow: 0 7px 14px 0 rgba(77,77,77,.1);
+}
+
+.mat-form-field-infix {
+    width: 140px !important;
+}
+
+table .mat-form-field-infix {
+    width: auto !important;
+}
+
+.btn-icon {
+    padding: 0 !important;
+    min-width: 45px !important;
+    width: 45px;
+    //height: 28px;
+    flex-shrink: 0;
+}
+
+.btn-icon .mat-button-wrapper {
+    vertical-align: middle !important;
+}
+
+.btn-rounded,
+.btn-rounded .mat-button-focus-overlay {
+    border-radius: 20px !important;
+}
+
+tr.mat-header-row {
+    height: 50px !important;
+}
+
+.expansion-no-bg.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.mat-step-icon .mat-icon {
+    font-size: 16px !important;
+}
+
+.inbox-tabs .mat-tab-label {
+    min-width: 159px !important;
+}
+
+.mat-table tr th:not(:first-child),
+.mat-table tr td:not(:first-child) {
+    min-width: 100px;
+}
+
+.mat-tree {
+    background: none !important;
+}

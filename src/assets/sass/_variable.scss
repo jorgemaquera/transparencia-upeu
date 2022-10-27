@@ -1,0 +1,245 @@
+//@import './mixins';
+//@import '@angular/material/theming';
+
+@use 'sass:math';
+
+$success-color: #55b58c;
+$success-contrast: #000;
+$info-color: #64b5f6;
+$info-contrast: #000;
+$warning-color: #ffd14f;
+$warning-contrast: #000;
+$error-color: #e24d4d;
+$note-color: #b95bd6;
+$error-contrast: #fff;
+
+$black: #000000;
+$white: #ffffff;
+
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+
+$text-muted: $gray-600 !default;
+
+//Main
+$main-fs: 13px;
+$main-ff: 'Nunito', 'sans-serif';
+$second-ff: 'Nunito', 'sans-serif';
+$main-fw: 500;
+$module: 12px;
+$main-lh: math.div($module * 2, $main-fs);
+$module-rem: math.div($module, $main-fs) * 1rem;
+$shape: 0;
+$border-radius: 4px;
+$buttons-radius: 4px;
+$box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+  0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+$transition: 0.3s ease-in-out;
+$border-width: 1px;
+
+//Animationng serve
+$animation: ease-in-out;
+
+//Media
+$max543: only screen and
+  (
+    max-width: 543px,
+  );
+$min544: only screen and
+  (
+    min-width: 544px,
+  );
+$max767: only screen and
+  (
+    max-width: 767px,
+  );
+$min768: only screen and
+  (
+    min-width: 768px,
+  );
+$max991: only screen and
+  (
+    max-width: 991px,
+  );
+$min992: only screen and
+  (
+    min-width: 992px,
+  );
+$max1199: only screen and
+  (
+    max-width: 1199px,
+  );
+$min1200: only screen and
+  (
+    min-width: 1200px,
+  );
+
+//Headers
+$headers-ff: $second-ff;
+$headers-fw: 700;
+
+//Tables
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$table-cell-padding: 0.75rem !default;
+$table-cell-padding-sm: 0.3rem !default;
+
+//$table-color:                 $body-color !default;
+$table-bg: null !default;
+$table-accent-bg: rgba($black, 0.05) !default;
+//$table-hover-color:           $table-color !default;
+//$table-hover-bg:              $bg-color !default;
+//$table-active-bg:             $table-hover-bg !default;
+
+$table-border-width: $border-width !default;
+$table-border-color: #eee !default;
+
+$table-head-bg: $gray-200 !default;
+$table-head-color: $gray-700 !default;
+
+$table-dark-color: $white !default;
+$table-dark-bg: $gray-800 !default;
+$table-dark-accent-bg: rgba($white, 0.05) !default;
+$table-dark-hover-color: $table-dark-color !default;
+$table-dark-hover-bg: rgba($white, 0.075) !default;
+$table-dark-border-color: lighten($table-dark-bg, 7.5%) !default;
+$table-dark-color: $white !default;
+
+$table-striped-order: odd !default;
+
+$table-caption-color: $text-muted !default;
+
+$table-bg-level: -9 !default;
+$table-border-level: -6 !default;
+
+// custom background and foreground palettes for material
+$theme-background: (
+  //custom
+  body-bg: #ffffff,
+
+  //bg-colors
+  bg-blue: #ecf2f9,
+  bg-red: #fce8e6,
+  bg-yellow: #fff3cd,
+  bg-green: #e9f5ef,
+  bg-purple: #e0dbf5,
+
+  //material
+  status-bar: rgba(0, 0, 0, 0.07),
+  app-bar: rgba(0, 0, 0, 0.07),
+  background: #f1f1f1,
+  tooltip: #747474,
+  hover: rgba(0, 0, 0, 0.05),
+  active: rgba(0, 0, 0, 0.07),
+  card: #ffffff,
+  dialog: #ffffff,
+  disabled-button: #f2f2f3,
+  raised-button: #ffffff,
+  focused-button: #f2f2f3,
+  selected-button: #f2f2f3,
+  selected-disabled-button: #f2f2f3,
+  disabled-button-toggle: #f2f2f3,
+  unselected-chip: #f2f2f3,
+  disabled-list-option: #f2f2f3
+);
+
+$theme-foreground: (
+  //custom
+  headers: rgba(0, 0, 0, 0.87),
+  secondary-headers: rgba(0, 0, 0, 0.87),
+  icons-hover: #333,
+  divider-solid: rgba(0, 0, 0, 0.12),
+  //colors
+  blue: #0170d0,
+  green: #129e5d,
+  yellow: #ffd14f,
+  purple: #6852d9,
+  red: #f53629,
+  fuxia: #9251ac,
+
+  //material
+  base: rgba(0, 0, 0, 0.54),
+  divider: #eeeeee,
+  dividers: #eeeeee,
+  disabled: rgba(0, 0, 0, 0.38),
+  disabled-button: rgba(#6e6e6e, 0.2),
+  disabled-text: rgba(0, 0, 0, 0.38),
+  hint-text: rgba(0, 0, 0, 0.38),
+  secondary-text: rgba(0, 0, 0, 0.54),
+  icon: #555555,
+  icons: #555555,
+  text: rgba(0, 0, 0, 0.54),
+  slider-min: rgba(0, 0, 0, 0.26),
+  slider-off: rgba(0, 0, 0, 0.26),
+  slider-off-active: rgba(0, 0, 0, 0.54)
+);
+
+// custom background and foreground palettes
+$theme-background-dark: (
+  //custom
+  body-bg: #292d30,
+
+  //bg-colors
+  bg-blue: #0170d0,
+  bg-red: #bf5149,
+  bg-yellow: #f5cf63,
+  bg-green: #31a26e,
+  bg-purple: #6852d9,
+
+  status-bar: green,
+  app-bar: green,
+  background: #323638,
+  tooltip: #323638,
+  hover: #3d4143,
+  active: #323638,
+  card: #323638,
+  dialog: #34373a,
+  disabled-button: #3d4143,
+  raised-button: #3d4143,
+  focused-button: #3d4143,
+  selected-button: #3d4143,
+  selected-disabled-button: #3d4143,
+  disabled-button-toggle: #3d4143,
+  unselected-chip: #3d4143,
+  disabled-list-option: #3d4143
+);
+
+$theme-foreground-dark: (
+  //custom
+  headers: #fff,
+  secondary-headers: rgba(#fff, 0.5),
+  icons-hover: rgba(#fff, 0.5),
+  divider-solid: #3a3f41,
+
+  //colors
+  blue: #0170d0,
+  green: #31a26e,
+  yellow: #ffd14f,
+  purple: #6852d9,
+  red: #d93025,
+  fuxia: #9251ac,
+
+  base: #b2bbbd,
+  divider: #3a3f41,
+  dividers: #3a3f41,
+  disabled: rgba(#fff, 0.2),
+  disabled-button: rgba(#fff, 0.2),
+  disabled-text: rgba(#fff, 0.2),
+  hint-text: #3d4143,
+  secondary-text: rgba(#b2bbbd, 0.8),
+  icon: #b2bbbd,
+  icons: #b2bbbd,
+  text: #b2bbbd,
+  slider-min: #ffffff,
+  slider-off: rgba(#b2bbbd, 0.8),
+  slider-off-active: rgba(#b2bbbd, 0.8)
+);

@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+
+@mixin sg-datepicker-theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .mat-datepicker-content.sg-datepicker-range .sg-calendar-body-range {
+    .sg-calendar-body-in-range {
+      background-color: mat.get-color-from-palette($primary, 50);
+
+      &.sg-calendar-body-range-start {
+        border-radius: 100% 0 0 100%;
+      }
+
+      &.sg-calendar-body-range-end {
+        border-radius: 0 100% 100% 0;
+      }
+    }
+  }
+}
+
+@mixin sg-datepicker-theme-dark($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .mat-datepicker-content.sg-datepicker-range .sg-calendar-body-range {
+    .sg-calendar-body-in-range {
+      background-color: mat.get-color-from-palette($primary, 50, 0.12);
+
+      &.sg-calendar-body-range-start {
+        border-radius: 100% 0 0 100%;
+      }
+
+      &.sg-calendar-body-range-end {
+        border-radius: 0 100% 100% 0;
+      }
+    }
+  }
+}
