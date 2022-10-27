@@ -1,0 +1,18 @@
+@import './variable';
+@import './custom-material-theme';
+@import './fonts';
+@import './typography';
+@import './structure';
+@import './tables';
+@import './material-elements';
+@import './custom';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+//@import './helpers';
+
+//@import './pages/material-components';
+//@import './pages/ngxtable';
+//@import './pages/bootstrap';
+//@import './pages/calendar';

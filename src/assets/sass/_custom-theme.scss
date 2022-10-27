@@ -1,0 +1,2614 @@
+// Material palettes:
+@use '@angular/material' as mat;
+// $mat-red, $mat-pink, $mat-purple, $mat-deep-purple, $mat-indigo, $mat-blue, $mat-light-blue, $mat-cyan, $mat-teal,
+// $mat-green, $mat-light-green, $mat-lime, $mat-yellow, $mat-amber, $mat-orange, $mat-deep-orange, $mat-brown,
+// $mat-grey, $mat-blue-grey
+
+@import 'skins/gray';
+@import 'skins/blue';
+@import 'skins/red';
+@import 'skins/sunrise';
+@import 'skins/green';
+@import 'skins/purple';
+@import 'skins/fuxia';
+@import 'skins/spaceblue';
+
+@mixin light-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  //typography
+  background: #fff;
+  color: mat.get-color-from-palette($foreground, base);
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.38) !important;
+  }
+
+  input:not(.mat-input-element):not(.ni-search-input):not(.mat-date-range-input-inner),
+  textarea:not(.mat-input-element),
+  select:not(.mat-input-element) {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  input.ng-invalid:not(.mat-input-element) {
+    background-color: mat.get-color-from-palette(
+      $background,
+      bg-red
+    ) !important;
+  }
+
+  .input-bg {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  ::-webkit-input-placeholder {
+    /* Edge */
+    color: mat.get-color-from-palette($foreground, secondary-text) !important;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: mat.get-color-from-palette($foreground, secondary-text) !important;
+  }
+
+  ::placeholder {
+    color: mat.get-color-from-palette($foreground, secondary-text) !important;
+  }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  form {
+    background-color: #fff;
+  }
+
+  .black,
+  a.black {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+  }
+
+  .headers-color-2 {
+    color: mat.get-color-from-palette($foreground, secondary-headers);
+  }
+
+  .form-control {
+    color: mat.get-color-from-palette($foreground, text);
+    background-color: #fff;
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .maintenance-mode {
+    background-color: #fff;
+  }
+
+  .add-card-box {
+    border-color: rgba(mat.get-color-from-palette($foreground, icons), 0.2);
+  }
+
+  //material elements
+  .mat-mini-fab.mini-fab-style-1 {
+    background-color: mat.get-color-from-palette($background, hover) !important;
+  }
+
+  .mat-mini-fab.mini-fab-style-1 .mat-button-wrapper > * {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+  }
+
+  .bordered-list mat-list-item {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .mat-menu-item .mat-icon-no-color,
+  .mat-menu-item-submenu-trigger::after {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  .mat-paginator,
+  mat-footer-row,
+  mat-header-row {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .mat-mini-fab.mini-fab-style-2 .mat-button-wrapper > * {
+    color: #fff !important;
+  }
+
+  .mat-progress-yellow.mat-progress-bar .mat-progress-bar-fill::after {
+    background-color: mat.get-color-from-palette(
+      $foreground,
+      yellow
+    ) !important;
+  }
+  .mat-expansion-bg {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  //navigation
+  .menu-sidebar {
+    background-color: #fff;
+  }
+
+  .main-menu > ul > li > div > a > span .group-title {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  ul.sub > li a {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  ul.sub > li:not(.active) a:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+    color: currentColor !important;
+  }
+
+  .main-menu > ul > li:not(.active) > div > a:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .btn-logout i {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .btn-logout i:hover {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .profile-img {
+    border-color: #fff;
+  }
+
+  .main-menu > ul > li.active .icon-wrap i,
+  .main-menu > ul > li.active > div > a > span .group-title,
+  .main-menu ul.sub > li.active a,
+  .main-menu ul.sub > li.active a i {
+    color: mat.get-color-from-palette($foreground, icons-hover) !important;
+  }
+
+  .sidebar-title h4 {
+    color: mat.get-color-from-palette($foreground, secondary-text) !important;
+  }
+
+  //header
+
+  .top-search-input-container {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .top-search-input-container.focused {
+    background-color: #fff;
+  }
+
+  input.top-search-input:not(:focus) {
+    background-color: transparent !important;
+  }
+
+  input.top-search-input:not(:focus)::placeholder {
+  }
+
+  .header-right > div > button > span > mat-icon {
+  }
+
+  .clear-input:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .top-search-input {
+    // background-color: #f4f4f4 !important;
+  }
+
+  .top-search-input:focus,
+  .top-search-input.focused {
+    background-color: transparent !important;
+  }
+
+  .result-item:hover {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .item-title span {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .item-details {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .results-container {
+    background-color: #fff;
+  }
+
+  //layout
+  .site-header {
+  }
+
+  .site-right {
+    background-color: #fff;
+  }
+
+  //content wraper
+  .content-wraper-header {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .content-wraper-header {
+    background-color: #fff;
+  }
+
+  .content-wraper-left {
+    border-color: #e7e7e7;
+    // background-color: mat-color($background, background);
+  }
+
+  .content-wraper-background {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .page-right-sidebar {
+    background-color: #fff;
+    border-left-color: #e7e7e7;
+  }
+
+  .content-scroll,
+  .page-body {
+    background-color: #f5f5f5;
+  }
+
+  //group
+  .group-input {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+  }
+
+  .item-info {
+    color: mat.get-color-from-palette($foreground, secondary-headers);
+  }
+
+  .item-info > span {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .group-detail-item:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .group-services-tabs {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .itinerary-fixed-wraper.fixed {
+    background-color: #fff;
+  }
+
+  .itinerary-fixed-wraper.fixed .itinerary-container .group-images,
+  .group-inspector {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  //documents list
+  .document-item {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .document-item:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  //quote
+  .quote-header,
+  .quote-price {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .quotation-top-bar {
+    background-color: #fff;
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .quote-price-label {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .quote-price-value,
+  .saved-time,
+  .total-selected {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .separator {
+    background-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .no-results-box {
+    background-color: #fff;
+  }
+
+  .pax-row,
+  .total-client-pax {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+  }
+
+  .total-client-pax,
+  .total-client-pax:focus {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .total-client {
+    color: mat.get-color-from-palette($foreground, green) !important;
+  }
+
+  .total-client,
+  .total-client:focus {
+    background-color: mat.get-color-from-palette(
+      $background,
+      bg-green
+    ) !important;
+  }
+
+  .itinerary-table-wraper::-webkit-scrollbar {
+    background-color: #f5f5f5 !important;
+  }
+
+  .itinerary-table-wraper::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.38) !important;
+  }
+
+  .itinerary-table-header table thead tr {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .filter-footer {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .it-table thead {
+    background: #fff;
+  }
+
+  .itinerary-table-header table thead tr th:nth-child(1) {
+    background: #fff;
+  }
+
+  .it-table th,
+  .it-table td {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  //day
+  .services-list {
+    background: #fff;
+  }
+
+  .services-list .service-row {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+    background: #fff;
+  }
+
+  .no-services {
+    background: #fff;
+  }
+
+  .day-row-block > div,
+  .itinerary-table-header table th {
+    border-color: #e7e7e7 !important;
+  }
+
+  .service-row:hover,
+  .service-row.selected {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .default-label,
+  .bcode-label,
+  .cat-label,
+  .label {
+    background-color: mat.get-color-from-palette($foreground, icons);
+    color: #fff;
+  }
+
+  .c-detail {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .c-detail-addon {
+    color: mat.get-color-from-palette($foreground, secondary-headers);
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  //searching services
+  .search-sidebar {
+    background: #fff;
+  }
+
+  .services-search-box,
+  .service-box {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .search-service-input,
+  .search-service-input:hover {
+    background-color: #fff !important;
+  }
+
+  .search-service-input::placeholder {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .service-box:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .ni-filter-header,
+  .ni-filter-body,
+  .ni-filter-footer {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .ni-filter-header {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .ni-filter-header:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .service-title {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  //ni components
+  .ni-table {
+    background: #fff;
+  }
+
+  .ni-table-filter-section {
+    background: #fff;
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .data-loading-shade,
+  .no-results-table {
+    background: #fff;
+  }
+
+  .ni-table-paginator {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .row-table-link {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+  }
+
+  .filter-control label:hover,
+  .header-row {
+    background: mat.get-color-from-palette($background, background);
+  }
+
+  .ni-filter-footer {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .task-row {
+    background-color: mat.get-color-from-palette($background, background);
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .mat-table-row.selected,
+  .hover-row.selected,
+  .hover-row:hover {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .bottom-section {
+    background-color: #fff;
+    border-top-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  //custom
+  .sub-header-title {
+    color: mat.get-color-from-palette($foreground, text) !important;
+  }
+
+  .crumbs {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .crumbs .crumb,
+  .crumbs .crumb .crumb-text-container .crumb-text {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .crumbs .crumb .crumb-text-container .crumb-home,
+  .crumbs .crumb .crumb-text-container .home {
+    fill: mat.get-color-from-palette($foreground, icons);
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .crumbs .crumb .crumb-text-container .crumb-home:hover,
+  .crumbs .crumb .crumb-text-container .home:hover {
+    color: mat.get-color-from-palette($foreground, icons-hover);
+    fill: mat.get-color-from-palette($foreground, icons-hover);
+  }
+
+  .crumb-caret-container .crumb-caret {
+    color: rgba(0, 0, 0, 0.54);
+    fill: rgba(0, 0, 0, 0.54);
+  }
+
+  .page-sidebar-header,
+  .bottom-bar {
+    border-color: rgba(#fff, 0.06);
+  }
+
+  .group-tab.active,
+  .group-tab:hover {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  i {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  // .mat-card:not([class*=mat-elevation-z]) {
+  //     box-shadow: $box-shadow !important;
+  // }
+
+  .ni-block {
+    background-color: #fff;
+  }
+
+  .ni-card-shadow {
+    background-color: #fff;
+    box-shadow: $box-shadow !important;
+  }
+
+  .ni-card-bordered {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .ni-card-bg {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .ni-card-icon {
+    background-color: #fff;
+  }
+
+  .card-title {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .item-detail-title {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .ni-card-fancy .item-detail-title,
+  .ni-card-fancy .item-detail-icon i {
+    color: #fff;
+  }
+
+  .ni-card-fancy .item-detail-label,
+  .ni-card-fancy .progress-labels {
+    color: rgba(#fff, 0.5);
+  }
+
+  .ni-card .ni-card-body {
+    background-color: #fff;
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  .ni-card-header-title {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .ni-list-item {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .ni-list-item > span:last-child {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .ni-list-item-hover:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .list-title {
+    color: mat.get-color-from-palette($foreground, secondary-headers);
+  }
+
+  .ni-block-header {
+    background-color: #fff;
+  }
+
+  .ni-block-header-title {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .delete-row {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .delete-row:hover {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .search-services {
+    background: mat.get-color-from-palette($background, background);
+  }
+
+  .top-tabs .mat-tab-label {
+    background: mat.get-color-from-palette($background, background);
+  }
+
+  .top-tabs .mat-tab-label.mat-tab-label-active {
+    background: #fff;
+  }
+
+  .no-files {
+    border-color: #eee;
+  }
+
+  .note-sidebar {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .row-details > .item-detail {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .item-detail-label {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .progress-labels {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .sidebar-details {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .page-nav-item:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .bordered {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .bg {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .table {
+    color: mat.get-color-from-palette($foreground, text);
+    //background-color: mat-color($background, background);
+
+    th {
+      color: mat.get-color-from-palette($foreground, secondary-text);
+    }
+
+    th,
+    td {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+    }
+
+    thead th {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+      color: mat.get-color-from-palette($foreground, secondary-text);
+    }
+
+    tbody + tbody {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+    }
+
+    .table-bordered {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+
+      th,
+      td {
+        border-color: mat.get-color-from-palette(
+          $foreground,
+          dividers
+        ) !important;
+      }
+    }
+
+    .table-hover {
+      tbody tr {
+        &:hover {
+          //color: $table-hover-color;
+          background-color: mat.get-color-from-palette($background, hover);
+        }
+      }
+    }
+
+    .foot-border {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+    }
+  }
+
+  .call-to-action {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .badge-warning {
+    background-color: mat.get-color-from-palette($background, bg-yellow);
+    color: #856404;
+  }
+
+  .badge-info {
+    background-color: mat.get-color-from-palette($background, bg-blue);
+    color: mat.get-color-from-palette($foreground, blue);
+  }
+
+  .badge-success {
+    background-color: mat.get-color-from-palette($background, bg-green);
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .badge-danger {
+    background-color: mat.get-color-from-palette($background, bg-red);
+    color: mat.get-color-from-palette($foreground, red);
+  }
+
+  .service-updated,
+  .service-updated:hover,
+  .btn-update.mat-button-toggle-checked {
+    background: #278cdb !important;
+  }
+
+  .service-new,
+  .service-new:hover,
+  .btn-new.mat-button-toggle-checked {
+    background: #4ba485 !important;
+  }
+
+  .service-error,
+  .service-error:hover,
+  .btn-cancel.mat-button-toggle-checked {
+    background: #ef6969 !important;
+  }
+
+  .service-updated .service-column-content > span,
+  .service-new .service-column-content > span,
+  .service-error .service-column-content > span {
+    color: #fff;
+  }
+
+  .service-updated .service-name .black,
+  .service-new .service-name .black,
+  .service-error .service-name .black {
+    color: #fff !important;
+  }
+
+  .reviewed-icon {
+    background-color: mat.get-color-from-palette($foreground, icons) !important;
+  }
+
+  .reviewed-icon.revised {
+    background-color: mat.get-color-from-palette($foreground, blue) !important;
+  }
+
+  .summary-container {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .inbox {
+    background: #fff;
+  }
+
+  .inbox-header,
+  .inbox-emails {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .email-item.selected,
+  .email-item:hover {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .selected-bar {
+    background-color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .email-item .email-subject {
+    color: mat.get-color-from-palette($foreground, secondary-headers);
+  }
+
+  .email-item .email-excerpt {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .add-note.hovering {
+    border-color: #f16624;
+  }
+
+  .services-tabs {
+    background-color: #fff;
+  }
+
+  .services-tabs-list .services-tab-item {
+    color: rgba(
+      mat.get-color-from-palette($foreground, secondary-text),
+      0.6
+    ) !important;
+  }
+
+  .services-tabs-list .services-tab-item.active {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .services-tabs-list .services-tab-item.current {
+    color: mat.get-color-from-palette($foreground, base) !important;
+  }
+
+  .services-tabs-list .services-tab-item:hover:not(.active) {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .m-label.note {
+    background-color: mat.get-color-from-palette($foreground, blue) !important;
+  }
+  .m-label.cruise {
+    background-color: mat.get-color-from-palette($foreground, green) !important;
+  }
+  .m-label.payment {
+    background-color: mat.get-color-from-palette($foreground, green) !important;
+  }
+  .m-label.blocking {
+    background-color: mat.get-color-from-palette(
+      $foreground,
+      yellow
+    ) !important;
+  }
+  .m-label.hotel-backup {
+    background-color: mat.get-color-from-palette(
+      $foreground,
+      purple
+    ) !important;
+  }
+  .m-label.train {
+    background-color: mat.get-color-from-palette($foreground, red) !important;
+  }
+  .m-label.service {
+    background-color: mat.get-color-from-palette(
+      $foreground,
+      purple
+    ) !important;
+  }
+  .m-label.hotel {
+    background-color: mat.get-color-from-palette($foreground, fuxia) !important;
+  }
+  .m-label.flight,
+  .m-label.other {
+    background-color: mat.get-color-from-palette($foreground, icons) !important;
+  }
+  .m-label.passport {
+    background-color: mat.get-color-from-palette($foreground, fuxia) !important;
+  }
+  .m-label.bus {
+    background-color: mat.get-color-from-palette($foreground, fuxia) !important;
+  }
+
+  .single-email-attachments {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .attachment {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .attachment:hover {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  //custom colors
+  .misc-label {
+    background-color: mat.get-color-from-palette($foreground, yellow);
+  }
+
+  .cat-label.purple {
+    background-color: mat.get-color-from-palette($foreground, fuxia);
+  }
+
+  .cat-label.blue {
+    background-color: mat.get-color-from-palette($foreground, blue);
+  }
+
+  .cat-label.yellow {
+    background-color: mat.get-color-from-palette($foreground, yellow);
+  }
+
+  .cat-label.green {
+    background-color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .c-detail-base {
+    color: mat.get-color-from-palette($foreground, green);
+    background-color: mat.get-color-from-palette($background, bg-green);
+  }
+
+  .c-detail-person {
+    color: mat.get-color-from-palette($foreground, blue);
+    background-color: mat.get-color-from-palette($background, bg-blue);
+  }
+
+  .c-detail-resource {
+    color: mat.get-color-from-palette($foreground, purple);
+    background-color: mat.get-color-from-palette($background, bg-purple);
+  }
+
+  .c-detail-rule-plus {
+    color: mat.get-color-from-palette($foreground, red);
+    background-color: mat.get-color-from-palette($background, bg-red);
+  }
+
+  .c-detail-rule-minus {
+    color: mat.get-color-from-palette($foreground, green);
+    background-color: mat.get-color-from-palette($background, bg-green);
+  }
+
+  .type-sales-update,
+  .type-initial-release {
+    background: mat.get-color-from-palette($foreground, yellow);
+  }
+
+  .type-ops-update {
+    background: mat.get-color-from-palette($foreground, green);
+  }
+
+  .type-ops-audit {
+    background: mat.get-color-from-palette($foreground, purple);
+  }
+
+  .quote-price-value-h {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .total-selected-h {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .total-row {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .red {
+    color: mat.get-color-from-palette($foreground, red) !important;
+  }
+  .white {
+    color: #ffffff;
+  }
+  .green {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .ni-alert {
+    background: mat.get-color-from-palette($background, hover);
+  }
+
+  .ni-alert.error {
+    color: mat.get-color-from-palette($foreground, red);
+    background-color: mat.get-color-from-palette($background, bg-red);
+  }
+
+  .ni-alert.info {
+    color: mat.get-color-from-palette($foreground, blue);
+    background-color: mat.get-color-from-palette($background, bg-blue);
+  }
+
+  .ni-alert.success {
+    color: mat.get-color-from-palette($foreground, green);
+    background-color: mat.get-color-from-palette($background, bg-green);
+  }
+
+  .ni-alert.warning {
+    color: #856404;
+    background-color: mat.get-color-from-palette($background, bg-yellow);
+  }
+
+  .material-icons.error {
+    color: mat.get-color-from-palette($foreground, red);
+  }
+
+  .material-icons.info {
+    color: mat.get-color-from-palette($foreground, blue);
+  }
+
+  .material-icons.success {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .material-icons.warning {
+    color: mat.get-color-from-palette($foreground, yellow);
+  }
+
+  .date-col {
+    background-color: #fff;
+    box-shadow: $box-shadow;
+  }
+
+  .date-text:hover {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .card-bg {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .notifications .notification:hover:not(.pending) {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .page-nav-item.active {
+    background-color: mat.get-color-from-palette(
+      $background,
+      active
+    ) !important;
+  }
+
+  .page-nav-item.active:after {
+    // background-color: mat-color($primary, 500);
+  }
+
+  .page-nav-item.active {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .ni-table-body,
+  .ni-table-body tbody tr {
+    background-color: #fff !important;
+  }
+
+  .ni-table-body tbody tr.selected {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .ni-table-body tbody .pending-row {
+    background-color: mat.get-color-from-palette($background, hover) !important;
+    font-weight: bold;
+  }
+
+  .ni-table-body tbody .pending-row td {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+  }
+
+  .ni-tab-group:hover:not(.active) {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .ni-tab-group.active {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .tabs-app-settings {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .tab-loading.loading-shape {
+    background-color: rgba(#fff, 0.5) !important;
+  }
+
+  .list-item-hover:hover,
+  .list-item-hover.active {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .page-split-left {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .batch {
+    border-right-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .batch-company {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .score-chip:hover {
+    background-color: mat.get-color-from-palette($background, hover) !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #dee2e6 !important;
+  }
+
+  .loading-itinerary {
+    background-color: #fff;
+  }
+
+  .q-actions-border {
+    border-bottom-color: mat.get-color-from-palette(
+      $foreground,
+      dividers
+    ) !important;
+  }
+
+  .q-action input {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .loading-shape {
+    background-color: mat.get-color-from-palette($background, body-bg);
+  }
+
+  .cell-info > i {
+    opacity: 0.6;
+  }
+
+  // provider services
+  .price-group-tab-title {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .row-item-text-label {
+    color: mat.get-color-from-palette($foreground, icon);
+  }
+
+  .row-item-text-selected {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .row-item-text-title {
+    color: #bababa;
+  }
+
+  .service-field,
+  .settings-field-input,
+  .pricegroup-input {
+    color: #000000 !important;
+    opacity: 1 !important;
+  }
+
+  .settings-field-input .mat-select-value,
+  .pricegroup-input .mat-select-value,
+  .pricegroup-input > small {
+    color: #000000 !important;
+  }
+
+  .price-group-tabs .mat-tab-label-active {
+    color: #000000 !important;
+    font-weight: bold;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.07) !important;
+  }
+
+  .highlight-row {
+    background-color: #fff3cd;
+  }
+
+  .addons-title {
+    font-weight: bold;
+    color: #000000;
+  }
+
+  .provider-row-title {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .price-group-panel.mat-expansion-panel {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .price-group-panel-header.mat-expansion-panel-header.mat-expanded {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .price-group-tab-content {
+    border-left: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .service-header {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  // payroll
+  .employee-header {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .bold-amount {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: mat.get-color-from-palette($background, background);
+    }
+  }
+
+  .ta-col {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .e-section {
+    border-bottom-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  @keyframes boxShadowLight {
+    100% {
+      box-shadow: 7px 7px 15px #d9d9d9, -7px -7px 15px #ffffff;
+      border-radius: 6px;
+    }
+  }
+
+  .active-atelier-editor {
+    animation: boxShadowLight 0.1s linear forwards;
+  }
+
+  .close-options {
+    background-color: #fff;
+  }
+
+  .request-sidebar {
+    background-color: #fff;
+  }
+
+  .btn-close-request {
+    color: #000 !important;
+  }
+
+  #email h1,
+  #email h2,
+  #email h3,
+  #email h4,
+  #email h5,
+  #email h6,
+  #email p,
+  #email li {
+    color: #000 !important;
+  }
+
+  .cd-horizontal-timeline .events a::after {
+    border: 2px solid #dfdfdf;
+    background-color: #f8f8f8;
+  }
+  .br-1,
+  .bb-1,
+  .bl-1,
+  .bt-1,
+  .b-1 {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .bg {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .bg-hover:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .cd-horizontal-timeline .events {
+    background-color: #dfdfdf !important;
+  }
+
+  //Docs
+  // .found em {
+  //     background: rgba(map-get(map-get($main-themes, blue), 100), .4);
+  //     color: map-get(map-get($main-themes, blue), 400);
+  //     font-style: normal;
+  // }
+
+  // .doc-nav-list > li.nav-item.active > .nav-item-wraper > .nav-item-name,
+  // .doc-nav-list > li.nav-item > .nav-item-wraper > .nav-item-name:hover,
+  // li.nav-item > .sub > .nav-item.active .nav-item-wraper > .nav-item-name,
+  // li.nav-item > .sub > .nav-item .nav-item-wraper > .nav-item-name:hover,
+  // .sub-topics-nav .sub > .nav-item .nav-item-wraper > .nav-item-name:hover,
+  // .sub-topic-nav .sub > .nav-item.active .nav-item-wraper > .nav-item-name  {
+  //     color: map-get(map-get($main-themes, blue), 400)
+  // }
+
+  // .crumb.active {
+  //     color: map-get(map-get($main-themes, blue), 400);
+  // }
+
+  // .crumb.link:hover {
+  //     color: map-get(map-get($main-themes, blue), 400);
+  // }
+
+  // .topic-content h4 > span:hover {
+  //     color: map-get(map-get($main-themes, blue), 400);
+  // }
+
+  // .q-title > span:hover {
+  //     color: map-get(map-get($main-themes, blue), 400);
+  // }
+}
+
+@mixin dark-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  background: mat.get-color-from-palette($background, body-bg);
+  color: mat.get-color-from-palette($foreground, base);
+
+  ::-webkit-scrollbar {
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(#fff, 0.2) !important;
+  }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  form {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  input:not(.mat-input-element):not(.ni-search-input):not(.mat-date-range-input-inner),
+  textarea:not(.mat-input-element),
+  select {
+    color: mat.get-color-from-palette($foreground, base);
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  i {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .black,
+  a.black {
+    color: #fff !important;
+  }
+
+  .icon-search {
+    fill: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .maintenance-mode {
+    background-color: mat.get-color-from-palette($background, background);
+    color: #fff;
+  }
+
+  .site-header,
+  .bottom-bar {
+    border-color: transparent;
+  }
+
+  .content-wraper-header {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .content-wraper-background {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .top-search-input-container {
+    background-color: mat.get-color-from-palette($background, active);
+  }
+
+  .top-search-input-container.focused {
+    background-color: mat.get-color-from-palette($background, hover);
+    color: mat.get-color-from-palette($foreground, base);
+  }
+
+  input.top-search-input:not(:focus) {
+    background-color: transparent !important;
+  }
+
+  input.top-search-input:not(:focus)::placeholder {
+  }
+
+  .header-right > div > button > span > mat-icon {
+  }
+
+  .clear-input:hover {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .top-search-input {
+    // background-color: #f4f4f4 !important;
+  }
+
+  .top-search-input:focus,
+  .top-search-input.focused {
+    background-color: transparent !important;
+  }
+
+  .content-wraper-left {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .menu-sidebar {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .main-menu > ul > li > div > a > span .group-title {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  ul.sub > li a {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  ul.sub > li:not(.active) a:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .main-menu > ul > li:not(.active) > div > a:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .btn-logout i {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .btn-logout i:hover {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .badge-warning {
+    background-color: mat.get-color-from-palette($background, bg-yellow);
+    color: #fff;
+  }
+
+  .badge-info {
+    background-color: mat.get-color-from-palette($background, bg-blue);
+    color: #fff;
+  }
+
+  .badge-success {
+    background-color: #31a26e;
+    color: #fff;
+  }
+
+  .badge-danger {
+    background-color: mat.get-color-from-palette($foreground, redblue);
+    color: #fff;
+  }
+
+  .ni-list-item-hover:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+
+  .page-nav-item:hover {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .ni-card-shadow {
+    border: 1px solid mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .ni-card-bordered {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .ni-card-bg {
+    border: 1px solid mat.get-color-from-palette($background, background) !important;
+  }
+
+  .ni-card .ni-card-body {
+    background-color: transparent !important;
+  }
+
+  .card-title {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .bordered {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .bg {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .table {
+    color: mat.get-color-from-palette($foreground, text);
+    //background-color: mat-color($background, background);
+
+    th {
+      color: mat.get-color-from-palette($foreground, secondary-text);
+    }
+
+    th,
+    td {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+    }
+
+    thead th {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+      color: mat.get-color-from-palette($foreground, secondary-text);
+    }
+
+    tbody + tbody {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+    }
+
+    .table-bordered {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+
+      th,
+      td {
+        border-color: mat.get-color-from-palette(
+          $foreground,
+          dividers
+        ) !important;
+      }
+    }
+
+    .table-hover {
+      tbody tr {
+        &:hover {
+          //color: $table-hover-color;
+          background-color: mat.get-color-from-palette($background, hover);
+        }
+      }
+    }
+
+    .foot-border {
+      border-color: mat.get-color-from-palette(
+        $foreground,
+        dividers
+      ) !important;
+    }
+  }
+
+  .mat-paginator,
+  mat-footer-row,
+  mat-header-row,
+  .ni-table-paginator {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .itinerary-fixed-wraper.fixed {
+    background: mat.get-color-from-palette($background, background);
+  }
+
+  .quote-price,
+  .quote-header,
+  .group-inspector,
+  .filter-footer {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .it-table thead {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+    background: mat.get-color-from-palette($background, background);
+  }
+
+  .it-table th,
+  .it-table td {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+    background: mat.get-color-from-palette($background, background);
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  .services-list .service-row {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .default-label,
+  .bcode-label,
+  .cat-label,
+  .label {
+    background-color: mat.get-color-from-palette($background, hover);
+    color: #fff;
+  }
+
+  .service-updated,
+  .service-updated.selected,
+  .service-updated:hover,
+  .btn-update.mat-button-toggle-checked {
+    background: #278cdb !important;
+  }
+
+  .service-new,
+  .service-new.selected,
+  .service-new:hover,
+  .btn-new.mat-button-toggle-checked {
+    background: mat.get-color-from-palette($background, bg-green) !important;
+  }
+
+  .service-error,
+  .service-error.selected,
+  .service-error:hover,
+  .btn-cancel.mat-button-toggle-checked {
+    background: mat.get-color-from-palette($background, bg-red) !important;
+  }
+
+  .service-updated .service-column-content > span,
+  .service-new .service-column-content > span,
+  .service-error .service-column-content > span {
+    color: #fff;
+  }
+
+  .service-updated .service-name .black,
+  .service-new .service-name .black,
+  .service-error .service-name .black {
+    color: #fff !important;
+  }
+
+  .reviewed-icon {
+    background-color: mat.get-color-from-palette($foreground, icons) !important;
+  }
+
+  .reviewed-icon.revised {
+    background-color: mat.get-color-from-palette($foreground, blue) !important;
+  }
+
+  .total-client {
+    color: #fff !important;
+  }
+
+  .total-client,
+  .total-client:focus {
+    background-color: mat.get-color-from-palette($foreground, green) !important;
+  }
+
+  .input-group-text {
+    background-color: #6a6d6f !important;
+    color: #fff !important;
+  }
+
+  .separator {
+    background-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .service-row:hover,
+  .service-row.selected {
+    background-color: rgba(mat.get-color-from-palette($background, hover), 0.5);
+  }
+
+  .profile-img {
+    border-color: mat.get-color-from-palette($background, background);
+  }
+
+  .results-container {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .result-item:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+
+  .search-sidebar {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .services-search-box,
+  .service-box {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .ni-filter-header,
+  .ni-filter-body,
+  .ni-filter-footer {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .service-box:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .ni-table-filter-section {
+    background-color: mat.get-color-from-palette($background, body-bg);
+  }
+
+  .ni-table-filter-section,
+  .ni-table-paginator {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .row-table-link {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+  }
+
+  .summary-container {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .loading-shade {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .no-files,
+  .note-sidebar {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .quotation-item:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .quotation-item {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .crumbs .crumb .crumb-text-container a.crumb-link {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  .crumbs .crumb .crumb-text-container .crumb-text {
+    color: #fff;
+  }
+
+  .tabs-group {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .task-row {
+    //background-color: mat-color($background, hover);
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .data-loading-shade,
+  .no-results-table {
+    background: mat.get-color-from-palette($background, body-bg);
+  }
+
+  .inbox-header,
+  .inbox-emails {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .email-item.selected,
+  .email-item:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .selected-bar {
+    background-color: mat.get-color-from-palette($foreground, icons);
+  }
+
+  .email-item .email-subject {
+    color: mat.get-color-from-palette($foreground, secondary-headers);
+  }
+
+  .email-item .email-excerpt {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .add-note.hovering {
+    border-color: #f16624;
+  }
+
+  .m-label.note {
+    background-color: mat.get-color-from-palette($foreground, blue) !important;
+  }
+  .m-label.cruise {
+    background-color: mat.get-color-from-palette($foreground, green) !important;
+  }
+  .m-label.payment {
+    background-color: mat.get-color-from-palette($foreground, green) !important;
+  }
+  .m-label.blocking {
+    background-color: mat.get-color-from-palette(
+      $foreground,
+      yellow
+    ) !important;
+  }
+  .m-label.hotel-backup {
+    background-color: mat.get-color-from-palette(
+      $foreground,
+      purple
+    ) !important;
+  }
+  .m-label.train {
+    background-color: mat.get-color-from-palette($foreground, red) !important;
+  }
+  .m-label.service {
+    background-color: mat.get-color-from-palette(
+      $foreground,
+      purple
+    ) !important;
+  }
+  .m-label.hotel {
+    background-color: mat.get-color-from-palette($foreground, fuxia) !important;
+  }
+  .m-label.flight,
+  .m-label.other {
+    background-color: mat.get-color-from-palette($foreground, icons) !important;
+  }
+  .m-label.passport {
+    background-color: mat.get-color-from-palette($foreground, fuxia) !important;
+  }
+  .m-label.bus {
+    background-color: mat.get-color-from-palette($foreground, fuxia) !important;
+  }
+
+  .single-email-attachments {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .attachment {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .attachment:hover {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  //documents list
+  .document-item {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .document-item:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  //custom colors
+  .misc-label {
+    background-color: mat.get-color-from-palette($foreground, yellow);
+  }
+
+  .cat-label.purple {
+    background-color: mat.get-color-from-palette($foreground, fuxia);
+  }
+
+  .cat-label.blue {
+    background-color: mat.get-color-from-palette($foreground, blue);
+  }
+
+  .cat-label.yellow {
+    background-color: mat.get-color-from-palette($foreground, yellow);
+  }
+
+  .cat-label.green {
+    background-color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .c-detail {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .c-detail-base {
+    color: #fff;
+    background-color: mat.get-color-from-palette($background, bg-green);
+  }
+
+  .c-detail-person {
+    color: #fff;
+    background-color: mat.get-color-from-palette($background, bg-blue);
+  }
+
+  .c-detail-resource {
+    color: #fff;
+    background-color: mat.get-color-from-palette($background, bg-purple);
+  }
+
+  .c-detail-rule-plus {
+    color: #fff;
+    background-color: mat.get-color-from-palette($background, bg-red);
+  }
+
+  .c-detail-rule-minus {
+    color: #fff;
+    background-color: mat.get-color-from-palette($background, bg-green);
+  }
+
+  .type-sales-update,
+  .type-initial-release {
+    background: mat.get-color-from-palette($foreground, yellow);
+  }
+
+  .type-ops-update {
+    background: mat.get-color-from-palette($foreground, green);
+  }
+
+  .type-ops-audit {
+    background: mat.get-color-from-palette($foreground, purple);
+  }
+
+  .quote-price-value-h {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .total-selected-h {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .total-row {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .red {
+    color: mat.get-color-from-palette($foreground, red) !important;
+  }
+  .white {
+    color: #ffffff;
+  }
+  .green {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .ni-alert {
+    color: #fff;
+    background: mat.get-color-from-palette($background, hover);
+  }
+
+  .ni-alert.error {
+    background-color: mat.get-color-from-palette($background, bg-red);
+  }
+
+  .ni-alert.info {
+    background-color: mat.get-color-from-palette($background, bg-blue);
+  }
+
+  .ni-alert.success {
+    background-color: mat.get-color-from-palette($background, bg-green);
+  }
+
+  .ni-alert.warning {
+    background-color: mat.get-color-from-palette($background, bg-yellow);
+    color: #000 !important;
+  }
+
+  .chip-yellow {
+    color: #000 !important;
+  }
+
+  .material-icons.error {
+    color: mat.get-color-from-palette($foreground, red);
+  }
+
+  .material-icons.info {
+    color: mat.get-color-from-palette($foreground, blue);
+  }
+
+  .material-icons.success {
+    color: mat.get-color-from-palette($foreground, green);
+  }
+
+  .material-icons.warning {
+    color: mat.get-color-from-palette($foreground, yellow);
+  }
+
+  .date-col {
+    background-color: mat.get-color-from-palette($background, background);
+    box-shadow: $box-shadow;
+  }
+
+  .ni-data-table .mat-table {
+    background: mat.get-color-from-palette($background, body-bg) !important;
+  }
+
+  .mat-card .ni-data-table .mat-table {
+    background: mat.get-color-from-palette($background, background) !important;
+  }
+
+  .page-left-sidebar .mat-expansion-panel {
+    background: mat.get-color-from-palette($background, body-bg) !important;
+  }
+
+  .chip-light {
+    background-color: #3d4143 !important;
+    color: mat.get-color-from-palette($foreground, base) !important;
+  }
+
+  .page-nav-item.active {
+    background-color: mat.get-color-from-palette(
+      $background,
+      active
+    ) !important;
+  }
+
+  .page-right-sidebar {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .ql-toolbar.ql-snow,
+  .ql-container.ql-snow {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .ql-snow .ql-stroke {
+    stroke: mat.get-color-from-palette($foreground, base);
+  }
+
+  .ql-editor.ql-blank::before {
+    color: rgba(mat.get-color-from-palette($foreground, base), 0.8) !important;
+  }
+
+  .services-tabs {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .services-tab-item:hover,
+  .services-tab-item.active {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .quotation-top-bar {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .dropzone {
+    background-color: mat.get-color-from-palette(
+      $background,
+      dialog
+    ) !important;
+  }
+
+  .field-control .dropzone {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .top-tabs {
+    background-color: mat.get-color-from-palette($background, card) !important;
+  }
+
+  .add-card-box {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .tabs-app-settings,
+  .ni-tabs-groups,
+  .ni-tab-group {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .ni-tab-group:hover:not(.active) {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .ni-tab-group.active {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  tbody tr.selected {
+    background-color: mat.get-color-from-palette($background, hover) !important;
+  }
+
+  .filter-control label:hover,
+  .header-row {
+    background: mat.get-color-from-palette($background, hover);
+  }
+
+  .bottom-section {
+    background-color: mat.get-color-from-palette(
+      $background,
+      body-bg
+    ) !important;
+    border-top-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .bottom-section .dropzone {
+    background-color: mat.get-color-from-palette(
+      $background,
+      body-bg
+    ) !important;
+  }
+
+  .ni-component-box,
+  .ni-image-box {
+    background-color: mat.get-color-from-palette(
+      $background,
+      body-bg
+    ) !important;
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .tab-loading.loading-shape {
+    background-color: rgba(
+      mat.get-color-from-palette($background, background),
+      0.2
+    ) !important;
+  }
+
+  .list-item-hover:hover,
+  .list-item-hover.active {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .call-to-action {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .email-attachments .attachment {
+    border-color: #636363 !important;
+  }
+
+  .page-split-left {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .batch {
+    border-right-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .batch-company {
+    border-color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .score-chip:hover {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .ck-content {
+    color: #292d30 !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: mat.get-color-from-palette($foreground, dividers) !important;
+  }
+
+  .loading-itinerary {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .q-actions-border {
+    border-bottom-color: mat.get-color-from-palette(
+      $foreground,
+      dividers
+    ) !important;
+  }
+
+  .q-action input {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .loading-shape {
+    background-color: mat.get-color-from-palette($background, body-bg);
+  }
+
+  // provider services
+  .price-group-tab-title {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .row-item-text-selected {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .row-item-text-title {
+    color: mat.get-color-from-palette($foreground, secondary-text);
+  }
+
+  .price-group-tabs .mat-tab-label-active {
+    color: mat.get-color-from-palette($foreground, headers);
+    font-weight: bold;
+    opacity: 1;
+    background-color: mat.get-color-from-palette($background, hover) !important;
+  }
+
+  .pricegroup-input {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  .pricegroup-input .mat-select-value {
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  .highlight-row {
+    background-color: mat.get-color-from-palette(
+      $background,
+      active
+    ) !important;
+  }
+
+  .service-field,
+  .settings-field-input,
+  .pricegroup-input {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+    opacity: 1 !important;
+  }
+
+  .settings-field-input .mat-select-value,
+  .pricegroup-input .mat-select-value,
+  .pricegroup-input > small {
+    color: mat.get-color-from-palette($foreground, headers) !important;
+  }
+
+  .addons-title {
+    font-weight: bold;
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .provider-row-title {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .price-group-panel.mat-expansion-panel {
+    border-top: 1px solid mat.get-color-from-palette($foreground, dividers);
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .price-group-panel-header.mat-expansion-panel-header.mat-expanded {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .price-group-tab-content {
+    border-left: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .service-header {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  // payroll
+  .employee-header {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .bold-amount {
+    color: mat.get-color-from-palette($foreground, headers);
+  }
+
+  .table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: mat.get-color-from-palette($background, background);
+    }
+  }
+
+  .ta-col {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .e-section {
+    border-bottom-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  @keyframes boxShadowDark {
+    100% {
+      box-shadow: 7px 7px 15px #2b2e30, -7px -7px 15px #3a3e40;
+      border-radius: 6px;
+    }
+  }
+
+  .active-atelier-editor {
+    animation: boxShadowDark 0.1s linear forwards;
+  }
+
+  .close-options {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .request-sidebar {
+    background-color: mat.get-color-from-palette($background, background);
+  }
+
+  .btn-close-request {
+    color: #fff !important;
+  }
+
+  #email h1,
+  #email h2,
+  #email h3,
+  #email h4,
+  #email h5,
+  #email h6,
+  #email p,
+  #email li {
+    color: #fff !important;
+  }
+  .cd-horizontal-timeline .events a::after {
+    border: 2px solid #3d4143 !important;
+    background-color: #3d4143 !important;
+  }
+
+  .br-1,
+  .bb-1,
+  .bl-1,
+  .bt-1,
+  .b-1 {
+    border-color: mat.get-color-from-palette($foreground, dividers);
+  }
+
+  .bg {
+    background-color: mat.get-color-from-palette(
+      $background,
+      background
+    ) !important;
+  }
+
+  .bg-hover:hover {
+    background-color: mat.get-color-from-palette($background, hover);
+  }
+
+  .cd-horizontal-timeline .events {
+    background-color: #323638 !important;
+  }
+
+  //@each $key, $value in $main-themes {
+  //@include theme($key);
+  //}
+}
+
+@mixin skin-theme($theme) {
+  $primary: map-get($theme, primary);
+  $primary-contrast: map-get($primary, contrast);
+  $accent: map-get($theme, accent);
+  $accent-contrast: map-get($accent, contrast);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .logo-name span {
+    background-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  a {
+    color: mat.get-color-from-palette($primary, 500);
+  }
+
+  a:hover:not(.mat-button) {
+    color: mat.get-color-from-palette($primary, 500) !important;
+  }
+
+  // ::-webkit-scrollbar-thumb {
+  //     background-color: mat-color($primary, 400);
+  // }
+
+  .mat-mini-fab.mini-fab-style-2 {
+    background-color: mat.get-color-from-palette($primary, 700) !important;
+  }
+
+  .main-menu > ul > li.active > div > a,
+  .main-menu ul.sub > li.active a {
+    background-color: rgba(mat.get-color-from-palette($primary, 500), 0.1);
+  }
+
+  .main-menu > ul > li.active .icon-wrap i,
+  .main-menu > ul > li.active > div > a > span .group-title,
+  .main-menu ul.sub > li.active a,
+  .main-menu ul.sub > li.active a i {
+    // color: mat-color($primary, 500) !important;
+  }
+
+  .mat-progress-yellow.mat-progress-bar .mat-progress-bar-fill::after {
+    background-color: mat.get-color-from-palette(
+      $foreground,
+      yellow
+    ) !important;
+  }
+
+  .bordered-list mat-list-item:hover {
+    background-color: rgba(mat.get-color-from-palette($primary, 500), 0.05);
+  }
+
+  .bordered-list mat-list-item .mat-list-icon {
+    color: mat.get-color-from-palette($primary, 500) !important;
+  }
+
+  .table-hover {
+    tbody tr {
+      &:hover {
+        background-color: rgba(mat.get-color-from-palette($primary, 500), 0.05);
+        th {
+          color: mat.get-color-from-palette($primary, 500);
+        }
+      }
+    }
+  }
+
+  .filtered,
+  .f-active {
+    background: mat.get-color-from-palette($primary, 500);
+  }
+
+  .mat-raised-button {
+    &.mat-primary {
+      .mat-button-wrapper {
+        .mat-icon {
+          color: mat.get-color-from-palette($primary-contrast, 500);
+        }
+      }
+    }
+  }
+
+  // .mat-datepicker-content.sg-datepicker-range .sg-calendar-body-range {
+  // .sg-calendar-body-in-range {
+  //     background-color: mat-color($primary, 50);
+
+  //     &.sg-calendar-body-range-start {
+  //         border-radius: 100% 0 0 100%;
+  //     }
+
+  //     &.sg-calendar-body-range-end {
+  //         border-radius: 0 100% 100% 0;
+  //     }
+  // }
+  // }
+
+  .search-bar-header {
+    background-color: mat.get-color-from-palette($primary, 400);
+  }
+
+  .btn-close {
+    background-color: mat.get-color-from-palette($primary, 600);
+  }
+
+  .btn-close:hover {
+    background-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .ni-card-fancy {
+    background-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .ni-card-icon {
+    color: mat.get-color-from-palette($primary, 500) !important;
+  }
+
+  .highlight {
+    color: mat.get-color-from-palette($accent, 500);
+  }
+
+  .row-table-link {
+    &:hover {
+      color: mat.get-color-from-palette($primary, 500) !important;
+    }
+  }
+
+  .service-overlay {
+    border-color: mat.get-color-from-palette($accent, 500) !important;
+  }
+
+  .m-label {
+    background-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .table-row-link:hover {
+    color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .file-icon {
+    background-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .order-passenger.active {
+    background-color: mat.get-color-from-palette($primary, 500);
+    color: #fff;
+  }
+
+  .current-tab {
+    color: mat.get-color-from-palette($primary, 500) !important;
+  }
+
+  .notification.pending {
+    background-color: rgba(mat.get-color-from-palette($primary, 100), 0.3);
+  }
+
+  .notification.pending:hover {
+    background-color: rgba(mat.get-color-from-palette($primary, 100), 0.4);
+  }
+
+  .lds-dual-ring:after {
+    border-color: mat.get-color-from-palette($primary, 500) transparent
+      mat.get-color-from-palette($primary, 500) transparent;
+  }
+
+  .lds-ripple div {
+    border-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .pointer:hover {
+    color: mat.get-color-from-palette($primary, 500) !important;
+  }
+
+  .lds-spinner {
+    border-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .worksheet-layout-choice.selected {
+    border-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  .settings-dialog-container .mat-dialog-container .settings-header {
+    background-color: mat.get-color-from-palette($primary, 500);
+    h4,
+    p {
+      color: mat.get-color-from-palette($primary-contrast, 500) !important;
+    }
+  }
+  .cd-horizontal-timeline .filling-line {
+    background-color: mat.get-color-from-palette($primary, 500);
+  }
+
+  /* .cd-horizontal-timeline .events a:hover::after {
+        color: mat.get-color-from-palette($primary, 500) !important;
+        background-color: mat.get-color-from-palette($primary, 500) !important;
+    } */
+
+  .cd-horizontal-timeline .events a.selected::after {
+    background-color: mat.get-color-from-palette($primary, 500) !important;
+    border-color: mat.get-color-from-palette($primary, 500) !important;
+  }
+
+  /* .cd-timeline-navigation a:hover {
+        border-color: mat.get-color-from-palette($primary, 500) !important;
+    } */
+
+  .last-fu-status {
+    background-color: mat.get-color-from-palette($primary, 500) !important;
+  }
+}
