@@ -82,7 +82,7 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
           <td mat-cell *matCellDef="let element">
-            <div *ngIf="element.actions.includes('view')">
+            <div *ngIf="element.actions.includes('view')" class="btn-view-doc">
               <button mat-mini-fab color="accent">
                 <mat-icon>visibility</mat-icon>
               </button>

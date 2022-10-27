@@ -43,8 +43,7 @@
   margin: 0 auto;
 
   border: none;
-  background: rgba(255, 255, 255, 0.14) url(/assets/svg/search.svg) no-repeat
-    center;
+  background: rgba(255, 255, 255, 0.14) url(/assets/svg/search.svg) no-repeat center;
   background-position: right center;
   background-origin: content-box;
   display: block;
@@ -67,6 +66,7 @@
 /* Body */
 .container {
   padding: 1% 4% 5% 4%;
+  width: 100vw;
 }
 
 .results {
@@ -93,6 +93,133 @@
   margin: 0;
 }
 
+.filter-checkbox {
+  font-size: 15px;
+  color: #4f4f4f;
+  margin: 3% 0%;
+}
+
+ul {
+  padding: 0;
+  margin: 5% 0;
+}
+
+li {
+  font-size: 14px;
+  margin-left: 0;
+  list-style-type: none;
+}
+
+.btn-view-more {
+  border: none;
+  background-color: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  color: #1a365f;
+  margin: 0 0 5% 0;
+  padding: 0;
+}
+
+.arrow-down {
+  border: solid #1a365e;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin: 0 0 1.8px 4px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.btn-apply-filters {
+  border-radius: 10px;
+  width: 100%;
+  height: 35px;
+  margin-top: 7%;
+  font-size: 20px;
+  color: #fff;
+}
+
+/* Table Styles */
+.docs-table {
+  width: 120%;
+  margin-left: 2%;
+}
+
+table {
+  width: 120%;
+}
+
+th {
+  color: #1a365e;
+  font-size: 15px;
+}
+
+tr {
+  font-size: 15px;
+  color: #000;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.cell {
+  padding: 5% 0;
+}
+
+.mat-paginator {
+  width: 120%;
+  background-color: #fff !important;
+}
+
+.mat-header-cell {
+  border-bottom: transparent;
+}
+
+.mat-cell {
+  border-bottom: 3px solid #1a365f;
+}
+
+.mat-column-actions {
+  text-align: center;
+}
+
+mat-paginator {
+  background-color: rgba(255, 255, 255, .0);
+}
+/* Header Styles
+Search Input Styles
+.search-container {
+  background-color: #1a365e;
+  padding: 1.3% 4%;
+}
+
+.field {
+  margin: 0 auto;
+
+  border: none;
+  background: rgba(255, 255, 255, 0.14) url(/assets/svg/search.svg) no-repeat
+    center;
+  background-position: right center;
+  background-origin: content-box;
+  display: block;
+  font-size: 14px;
+  border-radius: 46px;
+  padding: 0 2%;
+
+  width: 379px;
+  height: 45px;
+
+  outline: none;
+
+  color: #fff;
+}
+
+.field::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+Filters Styles
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background,
 .mat-checkbox-indeterminate .mat-checkbox-background {
   background-color: #f1bc00 !important;
@@ -161,12 +288,15 @@ li {
   color: #fff;
 }
 
-/* Table Styles */
-
-.docs-table, table {
+Table Styles
+.docs-table {
   width: 100%;
-  margin-left: 3%;
-  background-color: red;
+  margin-left: 2%;
+}
+
+table.mat-table {
+  width: 100%;
+  display: table;
 }
 
 th {
@@ -194,3 +324,9 @@ tr {
 .mat-column-actions {
   text-align: center;
 }
+
+.btn-view-doc {
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+} */
