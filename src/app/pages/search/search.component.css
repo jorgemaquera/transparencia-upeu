@@ -43,7 +43,8 @@
   margin: 0 auto;
 
   border: none;
-  background: rgba(255, 255, 255, 0.2) url(/assets/svg/search.svg) no-repeat center right 25px !important;
+  background: rgba(255, 255, 255, 0.2) url(/assets/svg/search.svg) no-repeat
+    center right 25px !important;
   background-origin: content-box;
   display: block;
   font-size: 14px;
@@ -184,5 +185,5 @@ td {
 }
 
 mat-paginator {
-  background-color: rgba(255, 255, 255, .0);
+  background-color: rgba(255, 255, 255, 0);
 }
