@@ -8,12 +8,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchComponent } from './components/search/search.component';
+import { SearchComponent } from './pages/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DocumentsComponent } from './documents/documents.component';
+import { DocumentsComponent } from './pages/documents/documents.component';
 import { MatSliderModule } from '@angular/material/slider';
-import { LoginComponent } from './login/login.component';
-import { AddDocumentComponent } from './add-document/add-document.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AddDocumentComponent } from './pages/add-document/add-document.component';
 import { MaterialModule } from './modules/material.module';
 
 @NgModule({

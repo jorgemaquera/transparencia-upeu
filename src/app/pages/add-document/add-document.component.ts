@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './add-document.component.html',
   styleUrls: ['./add-document.component.css'],
 })
-export class AddDocumentComponent implements OnInit {
+export class AddDocumentComponent {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   isValidEmail = true;
   addOnBlur = true;
@@ -18,8 +18,6 @@ export class AddDocumentComponent implements OnInit {
     recipients: new FormControl([], [Validators.required]),
   });
   constructor() {}
-
-  ngOnInit(): void {}
 
   addRecipient(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
