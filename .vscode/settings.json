@@ -1,24 +1,5 @@
 {
-  "files.eol": "\n",
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.formatOnSave": false
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.formatOnSave": false
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.formatOnSave": false
-  }
+  "prettier.printWidth": 80,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2
 }

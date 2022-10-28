@@ -1,27 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddDocumentComponent } from './pages/add-document/add-document.component';
-import { SearchComponent } from './pages/search/search.component';
-import { DocumentsComponent } from './pages/documents/documents.component';
 import { LoginComponent } from './pages/login/login.component';
+import { DefaultComponent } from './layout/default/default.component';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: SearchComponent,
-  },
+export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
   },
   {
-    path: 'documents',
-    component: DocumentsComponent,
+    path: '',
+    component: DefaultComponent,
+    // children: defaultRoutes,
+    loadChildren: () =>
+      import('./pages/pages-routing.module').then(m => m.PagesRoutingModule),
   },
-  {
-    path: 'add-document',
-    component: AddDocumentComponent,
-  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
