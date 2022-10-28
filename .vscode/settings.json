@@ -1,4 +1,7 @@
 {
+  "prettier.printWidth": 80,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2
   "files.eol": "\n",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",

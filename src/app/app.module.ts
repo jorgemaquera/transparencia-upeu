@@ -15,6 +15,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { LoginComponent } from './pages/login/login.component';
 import { AddDocumentComponent } from './pages/add-document/add-document.component';
 import { MaterialModule } from './modules/material.module';
+import { HeaderComponent } from './layout/header/header.component';
+import { DefaultComponent } from './layout/default/default.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { MaterialModule } from './modules/material.module';
     SearchComponent,
     LoginComponent,
     AddDocumentComponent,
+    HeaderComponent,
+    DefaultComponent,
   ],
   imports: [
     BrowserModule,
