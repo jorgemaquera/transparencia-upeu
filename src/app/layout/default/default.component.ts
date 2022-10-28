@@ -5,7 +5,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.css'],
 })
-export class DefaultComponent implements OnInit {
+export class DefaultComponent {
   currentTheme = 'light-theme';
   currentSkin = 'blue-skin';
 
@@ -21,6 +21,4 @@ export class DefaultComponent implements OnInit {
     this.renderer.addClass(document.body, this.currentSkin);
     this.renderer.addClass(document.body, this.currentTheme);
   }
-
-  ngOnInit(): void {}
 }

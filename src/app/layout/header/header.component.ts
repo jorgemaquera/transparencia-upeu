@@ -5,12 +5,10 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   constructor(private renderer: Renderer2) {}
 
   currentTheme = 'light-theme';
-
-  ngOnInit(): void {}
 
   changeTheme() {
     this.currentTheme = localStorage.getItem('theme')!;
