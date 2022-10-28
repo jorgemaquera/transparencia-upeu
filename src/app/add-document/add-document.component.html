@@ -1,86 +1,92 @@
 <div class="header">
-    <div class="row">
-      <img class="logo" src="assets/images/logo.png" height="35px" />
-      <div class="titles">
-        <div class="header-title">Portal de transparencia</div>
-        <div class="header-subtitle">
-          Escuela profesional de Ingeniería de sistemas
-        </div>
+  <div class="row">
+    <img class="logo" src="assets/images/logo.png" height="35px" />
+    <div class="titles">
+      <div class="header-title">Portal de transparencia</div>
+      <div class="header-subtitle">
+        Escuela profesional de Ingeniería de sistemas
       </div>
     </div>
   </div>
-  <div class="container mx-auto grid grid-cols-3 my-8 gap-x-8">
-    <div class="col-span-1">
-        <h2 class="text-4xl">Agregar Documento</h2>
-        <div class="mb-4 mt-8">
-          <mat-form-field appearance="fill">
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Ingresa nombre del documento" autocomplete="off">
-        </mat-form-field>
-        <div class="grid grid-cols-2 gap-x-4">
-            <mat-form-field appearance="fill">
-                <mat-label>Tipo</mat-label>
-                <mat-select>
-                  <mat-option>
-                    ola
-                  </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Codigo</mat-label>
-                <input matInput placeholder="Ingresar codigo" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Fecha de creacion</mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-hint>dd/mm/yyyy</mat-hint>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Area</mat-label>
-            <mat-select>
-              <mat-option>
-                ola
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-        </div>
-        </div>
-        <button mat-raised-button class="mb-4" color="primary">Subir documento</button>
-        <div class="space-y-4">
-        <mat-slide-toggle>Notificar a interesados</mat-slide-toggle>
+</div>
+<div class="container mx-auto grid grid-cols-3 my-8 gap-x-8">
+  <div class="col-span-1">
+    <h2 class="text-4xl">Agregar Documento</h2>
+    <div class="mb-4 mt-8">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          placeholder="Ingresa nombre del documento"
+          autocomplete="off" />
+      </mat-form-field>
+      <div class="grid grid-cols-2 gap-x-4">
         <mat-form-field appearance="fill">
-            <mat-label>Interesados</mat-label>
-            <mat-chip-list #chipListRecipients>
-                <mat-chip *ngFor="let recipient of documentForm.value.recipients" (removed)="removeRecipient(recipient)">
-                    {{recipient}}
-                    <button matChipRemove>
-                        <mat-icon>cancel</mat-icon>
-                    </button>
-                </mat-chip>
-                <input placeholder="New recipient..." [matChipInputFor]="chipListRecipients"
-                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" autocomplete="off"
-                        (matChipInputTokenEnd)="addRecipient($event)" [matChipInputAddOnBlur]="addOnBlur">
-                        <mat-error *ngIf="!isValidEmail">Not a valid email</mat-error>
-
-            </mat-chip-list>
-            <mat-hint>Escribe y pulsa enter</mat-hint>
+          <mat-label>Tipo</mat-label>
+          <mat-select>
+            <mat-option> ola </mat-option>
+          </mat-select>
         </mat-form-field>
-        <button mat-stroked-button class="mb-4" color="primary">Cancelar</button>
-        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Codigo</mat-label>
+          <input matInput placeholder="Ingresar codigo" autocomplete="off" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de creacion</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-hint>dd/mm/yyyy</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Area</mat-label>
+          <mat-select>
+            <mat-option> ola </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <div class="col-span-2 mx-8">
-        <mat-card class="my-14">
-          Preview
-        </mat-card>
-        <button mat-raised-button class="mb-4 float-right" color="primary">Publicar</button>
-      </div>
+    </div>
+    <button mat-raised-button class="mb-4" color="primary">
+      Subir documento
+    </button>
+    <div class="space-y-4">
+      <mat-slide-toggle>Notificar a interesados</mat-slide-toggle>
+      <mat-form-field appearance="fill">
+        <mat-label>Interesados</mat-label>
+        <mat-chip-list #chipListRecipients>
+          <mat-chip
+            *ngFor="let recipient of documentForm.value.recipients"
+            (removed)="removeRecipient(recipient)">
+            {{ recipient }}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="New recipient..."
+            [matChipInputFor]="chipListRecipients"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            autocomplete="off"
+            (matChipInputTokenEnd)="addRecipient($event)"
+            [matChipInputAddOnBlur]="addOnBlur" />
+          <mat-error *ngIf="!isValidEmail">Not a valid email</mat-error>
+        </mat-chip-list>
+        <mat-hint>Escribe y pulsa enter</mat-hint>
+      </mat-form-field>
+      <button mat-stroked-button class="mb-4" color="primary">Cancelar</button>
+    </div>
   </div>
+  <div class="col-span-2 mx-8">
+    <mat-card class="my-14"> Preview </mat-card>
+    <button mat-raised-button class="mb-4 float-right" color="primary">
+      Publicar
+    </button>
+  </div>
+</div>
 
-
-  
-      <!-- <div class="mat-elevation-z0 docs-table">
+<!-- <div class="mat-elevation-z0 docs-table">
         <table
           mat-table
           [dataSource]="datasource"
@@ -132,4 +138,3 @@
         </table>
         <mat-paginator pageSize="6"></mat-paginator>
       </div> -->
-  

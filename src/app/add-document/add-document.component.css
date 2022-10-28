@@ -1,36 +1,36 @@
 /* Header Styles */
 .header {
-    background-color: #1a365e;
-    padding: 1.3% 4%;
-  }
-  
-  .header-title {
-    font-family: poppins;
-    font-size: 32px;
-    line-height: 35px;
-  
-    color: #ffffff;
-  }
-  
-  .header-subtitle {
-    font-family: poppins;
-    font-size: 16px;
-  
-    color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .row {
-    display: flex;
-    flex-direction: left;
-  }
-  
-  .titles {
-    margin-left: 1.3%;
-  }
-  
-  .logo {
-    width: 61px;
-    height: 58px;
-    left: 42px;
-    top: 17px;
-  }
+  background-color: #1a365e;
+  padding: 1.3% 4%;
+}
+
+.header-title {
+  font-family: poppins;
+  font-size: 32px;
+  line-height: 35px;
+
+  color: #ffffff;
+}
+
+.header-subtitle {
+  font-family: poppins;
+  font-size: 16px;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.row {
+  display: flex;
+  flex-direction: left;
+}
+
+.titles {
+  margin-left: 1.3%;
+}
+
+.logo {
+  width: 61px;
+  height: 58px;
+  left: 42px;
+  top: 17px;
+}
