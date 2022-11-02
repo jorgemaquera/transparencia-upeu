@@ -154,7 +154,8 @@ $theme-background: (
 
 $theme-foreground: (
   //custom
-  headers: rgba(0, 0, 0, 0.87),
+  // headers: rgba(0, 0, 0, 0.87),
+  headers: #1a365e,
   secondary-headers: rgba(0, 0, 0, 0.87),
   icons-hover: #333,
   divider-solid: rgba(0, 0, 0, 0.12),
