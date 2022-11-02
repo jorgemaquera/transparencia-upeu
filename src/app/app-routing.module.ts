@@ -3,6 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './layout/default/default.component';
 import { SearchComponent } from './pages/search/search.component';
 
+import {
+  canActivate,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+
 export const routes: Routes = [
   {
     path: '',
@@ -20,6 +28,7 @@ export const routes: Routes = [
       import('./features/documents/documents.module').then(
         m => m.DocumentsModule
       ),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
