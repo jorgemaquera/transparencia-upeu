@@ -3,18 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './layout/default/default.component';
 import { SearchComponent } from './pages/search/search.component';
 
-import {
-  canActivate,
-  redirectLoggedInTo,
-  redirectUnauthorizedTo,
-} from '@angular/fire/auth-guard';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
 export const routes: Routes = [
   {
     path: '',
-    component: SearchComponent,
+    component: DefaultComponent,
+    children: [{ path: '', component: SearchComponent }],
   },
   {
     path: 'login',
