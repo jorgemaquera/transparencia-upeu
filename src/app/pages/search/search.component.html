@@ -1,23 +1,100 @@
-<div class="header">
-  <div class="row">
-    <img class="logo" src="assets/images/logo.png" height="35px" />
-    <div class="titles">
-      <div class="header-title">Portal de transparencia</div>
-      <div class="header-subtitle">
-        Escuela profesional de Ingeniería de sistemas
-      </div>
-    </div>
-  </div>
-</div>
 <div class="search-container">
   <input type="text" placeholder="Buscar documento" class="field" />
   <div class="icons-container">
     <div class="icon-search"></div>
   </div>
 </div>
-<h4 class="results">11 Resultados encontrados</h4>
-<div class="container">
-  <div class="row">
+<div class="container mx-auto">
+  <h4 class="text-5xl pt-8">11 Resultados encontrados</h4>
+  <div class="grid grid-cols-6 my-8 gap-x-8">
+    <div class="col-span-1">
+      <h4 class="text-5xl mb-3">Filtros</h4>
+      <h6 class="text-xl">Tipo de documento</h6>
+      <ul>
+        <li>
+          <mat-checkbox class="text-base">Acta</mat-checkbox>
+        </li>
+        <li>
+          <mat-checkbox class="text-base">Resolución</mat-checkbox>
+        </li>
+      </ul>
+      <button class="btn-view-more text-sm">
+        Ver más <i class="arrow-down text-base"></i>
+      </button>
+      <h6 class="text-xl">Año de publicación</h6>
+      <ul>
+        <li>
+          <mat-checkbox class="text-base">2020</mat-checkbox>
+        </li>
+        <li>
+          <mat-checkbox class="text-base">2021</mat-checkbox>
+        </li>
+      </ul>
+      <h6 class="text-xl">Área</h6>
+      <ul>
+        <li>
+          <mat-checkbox class="text-base">Lorem</mat-checkbox>
+        </li>
+        <li>
+          <mat-checkbox class="text-base">Ipsum</mat-checkbox>
+        </li>
+      </ul>
+      <button mat-flat-button color="accent" class="btn-apply-filters">
+        Filtrar
+      </button>
+    </div>
+    <div class="col-span-5">
+      <div class="mat-elevation-z0 mb-10">
+        <table
+          mat-table
+          [dataSource]="datasource"
+          matSort
+          (matSortChange)="announceSortChange($event)">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Nombre de documento
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="cell">{{ element.name }}</div>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="cell">{{ element.type }}</div>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Fecha de creación
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="cell">{{ element.date }}</div>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element">
+              <div
+                *ngIf="element.actions.includes('view')"
+                class="btn-view-doc">
+                <button mat-mini-fab color="accent">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="columns"></tr>
+          <tr mat-row *matRowDef="let row; columns: columns"></tr>
+        </table>
+        <mat-paginator pageSize="6"></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <h4 class="text-5xl px-4">11 Resultados encontrados</h4>
+<div class="container mx-auto grid grid-cols-3 my-8 gap-x-8">
+  <div class="col-span-2">
     <div class="filters">
       <h4 class="filters-title">Filtros</h4>
       <h6 class="filters-options">Tipo de documento</h6>
@@ -52,7 +129,8 @@
         Filtrar
       </button>
     </div>
-
+  </div>
+  <div class="col-span-1">
     <div class="mat-elevation-z0 docs-table">
       <table
         mat-table
@@ -97,4 +175,4 @@
       <mat-paginator pageSize="6"></mat-paginator>
     </div>
   </div>
-</div>
+</div> -->
