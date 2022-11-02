@@ -6,7 +6,8 @@ import { DefaultComponent } from './layout/default/default.component';
 export const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () =>
+      import('./features/auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: '',
@@ -15,7 +16,7 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages/pages-routing.module').then(m => m.PagesRoutingModule),
   },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
