@@ -17,6 +17,11 @@ import { AddDocumentComponent } from './pages/add-document/add-document.componen
 import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './layout/header/header.component';
 import { DefaultComponent } from './layout/default/default.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,10 @@ import { DefaultComponent } from './layout/default/default.component';
     BrowserAnimationsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [],
   bootstrap: [AppComponent],
