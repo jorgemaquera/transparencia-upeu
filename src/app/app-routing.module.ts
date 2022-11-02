@@ -1,21 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
 import { DefaultComponent } from './layout/default/default.component';
+import { SearchComponent } from './pages/search/search.component';
+
+import {
+  canActivate,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
 export const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
+    path: '',
+    component: SearchComponent,
   },
   {
-    path: '',
-    component: DefaultComponent,
-    // children: defaultRoutes,
+    path: 'login',
     loadChildren: () =>
-      import('./pages/pages-routing.module').then(m => m.PagesRoutingModule),
+      import('./features/auth/auth.module').then(m => m.AuthModule),
   },
-  { path: '**', redirectTo: '' },
+  {
+    path: 'documents',
+    component: DefaultComponent,
+    loadChildren: () =>
+      import('./features/documents/documents.module').then(
+        m => m.DocumentsModule
+      ),
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
