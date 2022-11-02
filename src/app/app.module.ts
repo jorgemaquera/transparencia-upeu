@@ -14,15 +14,12 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth, AuthModule } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
+import { DocumentsModule } from './features/documents/documents.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DocumentsComponent,
     SearchComponent,
-    AddDocumentComponent,
     HeaderComponent,
     DefaultComponent,
   ],
@@ -37,6 +34,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     AuthModule,
+    DocumentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
