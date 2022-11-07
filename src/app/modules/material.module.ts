@@ -41,6 +41,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
 
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment.prod';
+
 @NgModule({
   imports: [
     MatGridListModule,
@@ -127,6 +130,7 @@ import { MatTreeModule } from '@angular/material/tree';
   ],
   entryComponents: [],
   providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     // { provide: MAT_TABS_CONFIG, useValue: { animationDuration: '0ms' } }
   ],
 })

@@ -15,6 +15,8 @@ import { provideAuth, getAuth, AuthModule } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { DocumentsModule } from './features/documents/documents.module';
+import { DocumentsTableComponent } from './components/documents/documents-table/documents-table.component';
+import { DocumentsFiltersComponent } from './components/documents/documents-filters/documents-filters.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { DocumentsModule } from './features/documents/documents.module';
     SearchComponent,
     HeaderComponent,
     DefaultComponent,
+    DocumentsTableComponent,
+    DocumentsFiltersComponent,
   ],
   imports: [
     BrowserModule,
