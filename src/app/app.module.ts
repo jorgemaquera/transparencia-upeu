@@ -4,8 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './pages/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DocumentsComponent } from './pages/documents/documents.component';
-import { AddDocumentComponent } from './pages/add-document/add-document.component';
 import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './layout/header/header.component';
 import { DefaultComponent } from './layout/default/default.component';
@@ -17,6 +15,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { DocumentsModule } from './features/documents/documents.module';
 import { DocumentsTableComponent } from './components/documents/documents-table/documents-table.component';
 import { DocumentsFiltersComponent } from './components/documents/documents-filters/documents-filters.component';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,7 @@ import { DocumentsFiltersComponent } from './components/documents/documents-filt
     AuthModule,
     DocumentsModule,
   ],
-  providers: [],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
