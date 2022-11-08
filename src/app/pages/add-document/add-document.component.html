@@ -1,133 +1,133 @@
 <div class="container mx-auto grid grid-cols-3 my-8 gap-x-8">
   <div class="col-span-1">
     <h2 class="text-6xl my-8">Agregar Documento</h2>
-    <div class="flex flex-col my-10">
-      <div class="mb-4 mt-16">
-        <mat-form-field appearance="fill">
-          <mat-label>Nombre</mat-label>
-          <input
-            matInput
-            placeholder="Ingresa nombre del documento"
-            autocomplete="off" />
-        </mat-form-field>
-        <div class="grid grid-cols-2 gap-x-4">
+    <form [formGroup]="documentForm">
+      <div class="flex flex-col my-10">
+        <div class="mb-4 mt-16">
           <mat-form-field appearance="fill">
-            <mat-label>Tipo</mat-label>
-            <mat-select>
-              <mat-option>Acta</mat-option>
-            </mat-select>
+            <mat-label>Nombre</mat-label>
+            <input
+              formControlName="name"
+              matInput
+              placeholder="Ingresa nombre del documento"
+              autocomplete="off" />
           </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Codigo</mat-label>
-            <input matInput placeholder="Ingresar codigo" autocomplete="off" />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Fecha de creacion</mat-label>
-            <input matInput [matDatepicker]="picker" />
-            <mat-hint>dd/mm/yyyy</mat-hint>
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Area</mat-label>
-            <mat-select>
-              <mat-option>Gestion</mat-option>
-            </mat-select>
+          <div class="grid grid-cols-2 gap-x-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Tipo</mat-label>
+              <mat-select formControlName="type">
+                <mat-option *ngFor="let type of types" [value]="type.value">{{
+                  type.label
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Codigo</mat-label>
+              <input
+                formControlName="code"
+                matInput
+                placeholder="Ingresar codigo"
+                autocomplete="off" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Fecha de creacion</mat-label>
+              <input
+                formControlName="creationDate"
+                matInput
+                [matDatepicker]="picker" />
+              <mat-hint>dd/mm/yyyy</mat-hint>
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Area</mat-label>
+              <mat-select formControlName="area">
+                <mat-option *ngFor="let area of areas" [value]="area.value">{{
+                  area.label
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <input
+          accept="application/pdf"
+          hidden
+          (change)="onFileSelected()"
+          #fileInput
+          class="hidden"
+          id="file"
+          type="file" />
+        <button
+          mat-raised-button
+          class="mb-4"
+          color="primary"
+          (click)="fileInput.click()">
+          Subir documento
+        </button>
+        <div class="space-y-4">
+          <mat-slide-toggle formControlName="shouldNotify"
+            >Notificar a interesados</mat-slide-toggle
+          >
+          <mat-form-field
+            *ngIf="documentForm.value.shouldNotify"
+            appearance="fill">
+            <mat-label>Interesados</mat-label>
+            <mat-chip-list #chipListRecipients>
+              <mat-chip
+                *ngFor="let recipient of documentForm.value.recipients"
+                (removed)="removeRecipient(recipient)">
+                {{ recipient }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input
+                placeholder="New recipient..."
+                [matChipInputFor]="chipListRecipients"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                autocomplete="off"
+                (matChipInputTokenEnd)="addRecipient($event)"
+                [matChipInputAddOnBlur]="addOnBlur" />
+              <mat-error *ngIf="!isValidEmail">Not a valid email</mat-error>
+            </mat-chip-list>
+            <mat-hint>Escribe y pulsa enter</mat-hint>
           </mat-form-field>
         </div>
       </div>
-      <button mat-raised-button class="mb-4" color="primary">
-        Subir documento
-      </button>
-      <div class="space-y-4">
-        <mat-slide-toggle>Notificar a interesados</mat-slide-toggle>
-        <mat-form-field appearance="fill">
-          <mat-label>Interesados</mat-label>
-          <mat-chip-list #chipListRecipients>
-            <mat-chip
-              *ngFor="let recipient of documentForm.value.recipients"
-              (removed)="removeRecipient(recipient)">
-              {{ recipient }}
-              <button matChipRemove>
-                <mat-icon>cancel</mat-icon>
-              </button>
-            </mat-chip>
-            <input
-              placeholder="New recipient..."
-              [matChipInputFor]="chipListRecipients"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-              autocomplete="off"
-              (matChipInputTokenEnd)="addRecipient($event)"
-              [matChipInputAddOnBlur]="addOnBlur" />
-            <mat-error *ngIf="!isValidEmail">Not a valid email</mat-error>
-          </mat-chip-list>
-          <mat-hint>Escribe y pulsa enter</mat-hint>
-        </mat-form-field>
-        <button mat-stroked-button class="mb-4" color="primary">
-          Cancelar
-        </button>
-      </div>
-    </div>
+    </form>
   </div>
-  <div class="col-span-2 mx-8">
-    <mat-card class="my-14"> Preview </mat-card>
-    <button mat-raised-button class="mb-4 float-right" color="primary">
+  <div class="col-span-2 ml-8">
+    <mat-card class="my-14">
+      <button *ngIf="pdfSrc" mat-icon-button (click)="removeFile()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <pdf-viewer
+        *ngIf="pdfSrc"
+        [src]="pdfSrc"
+        [render-text]="true"
+        [original-size]="false"
+        style="width: 100%; height: 50vh">
+      </pdf-viewer>
+      <div *ngIf="!pdfSrc">Sin archivo seleccionado</div>
+      <mat-progress-bar
+        *ngIf="uploadPercent && uploadPercent < 100"
+        class="mt-4"
+        mode="determinate"
+        [value]="uploadPercent"></mat-progress-bar>
+    </mat-card>
+  </div>
+  <div class="col-span-3 flex justify-between">
+    <button
+      [disabled]="uploadPercent"
+      mat-stroked-button
+      (click)="cancel()"
+      color="primary">
+      Cancelar
+    </button>
+    <button mat-raised-button color="primary" (click)="uploadFile()">
       Publicar
     </button>
   </div>
 </div>
-
-<!-- <div class="mat-elevation-z0 docs-table">
-        <table
-          mat-table
-          [dataSource]="datasource"
-          matSort
-          (matSortChange)="announceSortChange($event)">
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-              Nombre de documento
-            </th>
-            <td mat-cell *matCellDef="let element">
-              <div class="cell">{{ element.name }}</div>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="type">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
-            <td mat-cell *matCellDef="let element">
-              <div class="cell">{{ element.type }}</div>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-              Fecha de creación
-            </th>
-            <td mat-cell *matCellDef="let element">
-              <div class="cell">{{ element.date }}</div>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="state">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
-            <td mat-cell *matCellDef="let element">
-              <div class="cell">{{ element.state }}</div>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef>Acciones</th>
-            <td mat-cell *matCellDef="let element">
-              <div *ngIf="element.actions.includes('edit')">
-                <button mat-mini-fab class="btn-edit-doc">
-                  <img src="assets/svg/edit.svg" />
-                </button>
-                <button mat-mini-fab class="btn-delete-doc">
-                  <img src="assets/svg/delete.svg" />
-                </button>
-              </div>
-            </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="columns"></tr>
-          <tr mat-row *matRowDef="let row; columns: columns"></tr>
-        </table>
-        <mat-paginator pageSize="6"></mat-paginator>
-      </div> -->

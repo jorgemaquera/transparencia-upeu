@@ -16,6 +16,7 @@ import { DocumentsModule } from './features/documents/documents.module';
 import { DocumentsTableComponent } from './components/documents/documents-table/documents-table.component';
 import { DocumentsFiltersComponent } from './components/documents/documents-filters/documents-filters.component';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,8 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     BrowserAnimationsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

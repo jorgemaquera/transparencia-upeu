@@ -25,4 +25,8 @@ export class DocumentService {
       .snapshotChanges()
       .pipe(map(e => e.map(d => d.payload.doc.data())));
   }
+
+  async add(document: DocumentsData): Promise<any> {
+    return await this.documentsRef.add(document);
+  }
 }
