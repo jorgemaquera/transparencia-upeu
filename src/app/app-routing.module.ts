@@ -11,7 +11,8 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultComponent,
-    children: [{ path: '', component: SearchComponent }],
+    loadChildren: () =>
+      import('./features/search/search.module').then(m => m.SearchModule),
   },
   {
     path: 'login',
