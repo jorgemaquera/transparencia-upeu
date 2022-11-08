@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
   getAllDocuments(): void {
     this.documentService.getAll().subscribe(documents => {
       this.documents = documents;
+      console.log(this.documents);
     });
   }
 }

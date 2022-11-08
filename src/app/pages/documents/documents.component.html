@@ -1,105 +1,22 @@
-<div class="header">
-  <div class="row">
-    <img class="logo" src="assets/images/logo.png" height="35px" />
-    <div class="titles">
-      <div class="header-title">Portal de transparencia</div>
-      <div class="header-subtitle">
-        Escuela profesional de Ingeniería de sistemas
-      </div>
-    </div>
+<div class="search-container">
+  <input type="text" placeholder="Buscar documento" class="field" />
+  <div class="icons-container">
+    <div class="icon-search"></div>
   </div>
 </div>
-<div class="sub-header">
-  <h2 class="documents-title">Documentos</h2>
-  <button class="btn-add-document">Agregar documento</button>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="filters">
-      <h4 class="filters-title">Filtros</h4>
-      <h6 class="filters-options">Tipo de documento</h6>
-      <ul>
-        <li>
-          <mat-checkbox class="filter-checkbox">Acta</mat-checkbox>
-        </li>
-        <li>
-          <mat-checkbox class="filter-checkbox">Resolución</mat-checkbox>
-        </li>
-      </ul>
-      <button class="btn-view-more">Ver más <i class="arrow-down"></i></button>
-      <h6 class="filters-options">Año de publicación</h6>
-      <ul>
-        <li>
-          <mat-checkbox class="filter-checkbox">2020</mat-checkbox>
-        </li>
-        <li>
-          <mat-checkbox class="filter-checkbox">2021</mat-checkbox>
-        </li>
-      </ul>
-      <h6 class="filters-options">Área</h6>
-      <ul>
-        <li>
-          <mat-checkbox class="filter-checkbox">Lorem</mat-checkbox>
-        </li>
-        <li>
-          <mat-checkbox class="filter-checkbox">Ipsum</mat-checkbox>
-        </li>
-      </ul>
-      <button class="btn-apply-filters">Filtrar</button>
+<div class="container mx-auto">
+  <div class="flex justify-between">
+    <h4 class="text-6xl pt-8">Documentos</h4>
+    <button mat-flat-button color="accent" class="btn-add-document">
+      Agregar documento
+    </button>
+  </div>
+  <div class="grid grid-cols-6 my-8 gap-x-8">
+    <div class="col-span-1">
+      <app-documents-filters [documents]="documents"></app-documents-filters>
     </div>
-
-    <div class="mat-elevation-z0 docs-table">
-      <table
-        mat-table
-        [dataSource]="datasource"
-        matSort
-        (matSortChange)="announceSortChange($event)">
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            Nombre de documento
-          </th>
-          <td mat-cell *matCellDef="let element">
-            <div class="cell">{{ element.name }}</div>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="type">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
-          <td mat-cell *matCellDef="let element">
-            <div class="cell">{{ element.type }}</div>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            Fecha de creación
-          </th>
-          <td mat-cell *matCellDef="let element">
-            <div class="cell">{{ element.date }}</div>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="state">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
-          <td mat-cell *matCellDef="let element">
-            <div class="cell">{{ element.state }}</div>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef>Acciones</th>
-          <td mat-cell *matCellDef="let element">
-            <div *ngIf="element.actions.includes('edit')">
-              <button mat-mini-fab class="btn-edit-doc">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-mini-fab class="btn-delete-doc">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let row; columns: columns"></tr>
-      </table>
-      <mat-paginator pageSize="6"></mat-paginator>
+    <div class="col-span-5">
+      <app-documents-table [documents]="documents"></app-documents-table>
     </div>
   </div>
 </div>
