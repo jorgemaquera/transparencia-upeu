@@ -1,42 +1,3 @@
-/* Header Styles */
-.header {
-  background-color: #1a365e;
-  padding: 1.3% 4%;
-}
-
-.header-title {
-  font-family: Poppins;
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 35px;
-
-  color: #ffffff;
-}
-
-.header-subtitle {
-  font-family: Poppins;
-  font-size: 16px;
-
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.row {
-  display: flex;
-  flex-direction: left;
-}
-
-.titles {
-  margin-left: 1.3%;
-}
-
-.logo {
-  width: 61px;
-  height: 58px;
-  left: 42px;
-  top: 17px;
-}
-
-/* Search Input Styles */
 .search-container {
   background-color: #1a365e;
   padding: 1.3% 4%;
@@ -46,17 +7,16 @@
   margin: 0 auto;
 
   border: none;
-  background: rgba(255, 255, 255, 0.14) url(/assets/svg/search.svg) no-repeat
-    center;
-  background-position: right center;
+  background: rgba(255, 255, 255, 0.2) url(/assets/svg/search.svg) no-repeat
+    center right 25px !important;
   background-origin: content-box;
   display: block;
   font-size: 14px;
-  border-radius: 46px;
-  padding: 0 2%;
+  border-radius: 46px !important;
+  padding: 0 2% !important;
 
-  width: 379px;
-  height: 45px;
+  width: 379px !important;
+  height: 45px !important;
 
   outline: none;
 
@@ -64,182 +24,11 @@
 }
 
 .field::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-/* Body */
-.container {
-  padding: 1% 4% 5% 4%;
-}
-
-.results {
-  font-size: 36px;
-  color: #1a365e;
-  margin: 0;
-  font-family: Poppins;
-  padding: 2% 4% 0 4%;
-}
-
-.documents-title {
-  font-size: 45px;
-  color: #1a365e;
-  margin: 0;
-  font-family: Poppins;
-  padding: 2% 4% 0 4%;
-}
-
-/* Filters Styles */
-.filters {
-  width: 16%;
-}
-
-.filters-title {
-  font-family: Poppins;
-  font-size: 40px;
-  margin: 0 0 7% 0;
-  color: #1a365f;
-}
-
-.filters-options {
-  font-family: Poppins;
-  font-size: 16px;
-  color: #1a365f;
-  margin: 0;
-}
-
-::ng-deep .mat-checkbox-checked .mat-checkbox-background,
-.mat-checkbox-indeterminate .mat-checkbox-background {
-  background-color: #f1bc00 !important;
-  border-radius: 4px !important;
-  border-width: 3px !important;
-}
-
-::ng-deep
-  .mat-checkbox:not(.mat-checkbox-disabled)
-  .mat-checkbox-ripple
-  .mat-ripple-element {
-  background-color: #f1bc00 !important;
-  border-radius: 4px !important;
-  border-width: 3px !important;
-}
-
-::ng-deep .mat-checkbox-frame {
-  border-color: #b0b1b6;
-  border-radius: 4px !important;
-  border-width: 3px !important;
-}
-
-.filter-checkbox {
-  font-family: Poppins;
-  font-size: 15px;
-  color: #4f4f4f;
-  margin: 3% 0%;
-}
-
-ul {
-  padding: 0;
-  margin: 5% 0;
-}
-
-li {
-  font-size: 14px;
-  margin-left: 0;
-  list-style-type: none;
-}
-
-.btn-view-more {
-  border: none;
-  background-color: inherit;
-  font-size: 12px;
-  cursor: pointer;
-  color: #1a365f;
-  font-family: Poppins;
-  margin: 0 0 5% 0;
-  padding: 0;
-}
-
-.arrow-down {
-  border: solid #1a365e;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 3px;
-  margin: 0 0 1.8px 4px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
-
-.btn-apply-filters {
-  border: none;
-  background-color: #f1bc00;
-  border-radius: 10px;
-  width: 100%;
-  height: 32px;
-  margin-top: 7%;
-  font-family: Poppins;
-  font-size: 20px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .btn-add-document {
-  border: none;
-  background-color: #f1bc00;
+  margin-top: 2.8%;
   border-radius: 10px;
-  width: 250px;
-  height: 32px;
-  margin-top: 7%;
-  font-family: Poppins;
-  font-size: 20px;
-  color: #fff;
-}
-
-.sub-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 3%;
-}
-
-/* Table Styles */
-
-.docs-table,
-table {
-  width: 100%;
-  font-family: Poppins;
-  margin-left: 1%;
-}
-
-th {
-  color: #1a365e;
   font-size: 15px;
-}
-
-tr {
-  font-size: 15px;
-  color: #000;
-  font-family: Poppins;
-  font-weight: normal;
-}
-
-.cell {
-  padding: 5% 0;
-}
-
-.btn-view-doc {
-  background-color: #f1bc00;
-}
-
-.btn-edit-doc {
-  background-color: #ffffff;
-}
-
-.mat-header-cell {
-  border-bottom: transparent;
-}
-
-.mat-cell {
-  border-bottom: 3px solid #1a365f;
-}
-
-.mat-column-actions {
-  text-align: center;
 }

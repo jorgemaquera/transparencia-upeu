@@ -13,7 +13,6 @@ export class DocumentsFiltersComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.documents = changes['documents'].currentValue;
-    console.log(typeof this.documents[0].creationDate);
   }
 
   getAllFilters(): void {}
