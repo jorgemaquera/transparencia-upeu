@@ -6,6 +6,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { DocumentsData } from '../interfaces/documents_data.interface';
 import { Observable } from 'rxjs';
+import { Functions, httpsCallable } from '@angular/fire/functions';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class DocumentService {
 
   documentsRef: AngularFirestoreCollection<DocumentsData>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private functions: Functions) {
     this.documentsRef = db.collection(this.collectionPath);
   }
 
@@ -28,5 +29,14 @@ export class DocumentService {
 
   async add(document: DocumentsData): Promise<any> {
     return await this.documentsRef.add(document);
+  }
+
+  async notifyInterestedParties(
+    to: string[],
+    name: string,
+    creationDate: moment.Moment
+  ) {
+    const notify = httpsCallable(this.functions, 'notifyInterestedParties');
+    return await notify({ to, name, creationDate: creationDate.toJSON() });
   }
 }

@@ -60,6 +60,7 @@
           id="file"
           type="file" />
         <button
+          [disabled]="file"
           mat-raised-button
           class="mb-4"
           color="primary"
@@ -84,7 +85,7 @@
                 </button>
               </mat-chip>
               <input
-                placeholder="New recipient..."
+                placeholder="Nuevo interesado..."
                 [matChipInputFor]="chipListRecipients"
                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 autocomplete="off"
