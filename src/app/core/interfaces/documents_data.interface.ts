@@ -6,5 +6,4 @@ export interface DocumentsData {
   deprecated: boolean;
   code: string;
   area: string;
-  year: string;
 }

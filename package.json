@@ -21,11 +21,13 @@
     "@angular/fire": "^7.4.1",
     "@angular/forms": "^14.2.0",
     "@angular/material": "^14.2.5",
+    "@angular/material-moment-adapter": "^14.2.6",
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "firebase": "^9.12.1",
     "moment": "^2.29.4",
+    "ng2-pdf-viewer": "^9.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
