@@ -1,0 +1,28 @@
+<form *ngIf="filtersForm" [formGroup]="filtersForm">
+  <h4 class="text-5xl mb-3">Filtros</h4>
+  <ng-container
+    *ngFor="let sectionGroup of filtersForm.controls; let i = index"
+    [formGroupName]="i">
+    <h6 class="text-xl">{{ sectionGroup.value.label }}</h6>
+    <ul>
+      <li
+        *ngFor="
+          let subSectionGroup of sectionGroup.get('sections').controls;
+          let j = index
+        ">
+        <mat-checkbox
+          [formControl]="subSectionGroup.get('checked')"
+          class="text-base"
+          >{{ subSectionGroup.value.label }}</mat-checkbox
+        >
+      </li>
+    </ul>
+  </ng-container>
+  <button
+    mat-flat-button
+    color="accent"
+    class="btn-apply-filters"
+    (click)="filter()">
+    Filtrar
+  </button>
+</form>

@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddDocumentComponent } from 'src/app/pages/add-document/add-document.component';
+import { AddDocumentComponent } from 'src/app/pages/documents/add-document/add-document.component';
 import { DocumentsComponent } from 'src/app/pages/documents/documents.component';
+import { AuthGuard } from '../auth/auth.guard';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DocumentsComponent,
+    component: SearchComponent,
   },
   {
-    path: 'add',
+    path: 'documents',
+    component: DocumentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'documents/add',
     component: AddDocumentComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
@@ -18,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DocumentsRoutingModule {}
+export class PagesRoutingModule {}

@@ -34,7 +34,8 @@
               <input
                 formControlName="creationDate"
                 matInput
-                [matDatepicker]="picker" />
+                [matDatepicker]="picker"
+                [max]="maxDate" />
               <mat-hint>dd/mm/yyyy</mat-hint>
               <mat-datepicker-toggle
                 matSuffix

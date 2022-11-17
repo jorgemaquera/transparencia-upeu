@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
-import { HeaderComponent } from './layout/header/header.component';
-import { DefaultComponent } from './layout/default/default.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth, AuthModule } from '@angular/fire/auth';
@@ -14,18 +10,15 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { SharedModule } from './modules/shared.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from './layout/layout.module';
+import { ComponentsModule } from './components/components.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, DefaultComponent],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserAnimationsModule,
     MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -33,6 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     provideFunctions(() => getFunctions()),
     AuthModule,
     SharedModule,
+    LayoutModule,
+    ComponentsModule,
+    PagesModule,
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],

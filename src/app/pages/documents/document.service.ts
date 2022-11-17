@@ -4,9 +4,9 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { DocumentsData } from '../interfaces/documents_data.interface';
 import { Observable } from 'rxjs';
 import { Functions, httpsCallable } from '@angular/fire/functions';
+import { DocumentsData } from 'src/app/pages/documents/documents';
 
 @Injectable({
   providedIn: 'root',
@@ -27,8 +27,8 @@ export class DocumentService {
       .pipe(map(e => e.map(d => d.payload.doc.data())));
   }
 
-  async add(document: DocumentsData): Promise<any> {
-    return await this.documentsRef.add(document);
+  async add(id: string, document: DocumentsData): Promise<any> {
+    return await this.documentsRef.doc(id).set(document);
   }
 
   async notifyInterestedParties(

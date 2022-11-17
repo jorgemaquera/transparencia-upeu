@@ -1,0 +1,256 @@
+:host .tabsJoined .top-tabs {
+  margin-bottom: 0 !important;
+}
+.rz-data-table {
+  height: 100%;
+}
+.rz-search-input {
+  background: transparent;
+  outline: 0;
+  border: none;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  height: 56px;
+  color: inherit;
+  font-family: inherit;
+}
+.rz-search-input:focus {
+  outline: 0;
+}
+.rz-search-input::-webkit-input-placeholder {
+  font-weight: 300;
+}
+.rz-table-filter-section {
+  height: 50px;
+  padding: 0 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: flex;
+  align-items: center;
+}
+.data-loading-shade {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+.data-loading-shade-edit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /*background: rgba(0, 0, 0, 0.15);
+ */
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.data-rate-limit-reached {
+  color: #980000;
+  max-width: 360px;
+  text-align: center;
+}
+/* Structure Rz Table */
+.rz-table {
+  display: flex;
+  flex-flow: column;
+  min-width: 300px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.rz-table-header {
+  flex: 0 0 50px;
+}
+.no-results-table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  text-align: center;
+}
+.no-results-table i {
+  font-size: 3rem !important;
+  display: block;
+}
+.no-results-table span {
+  display: block;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.rz-header-row th,
+.rz-body-row td {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+.rz-header-row th,
+.rz-body-row td {
+  white-space: nowrap;
+}
+.rz-header-row th:nth-child(1),
+.rz-body-row td:nth-child(1) {
+  text-align: center;
+}
+.rz-table-body-wrapper {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+.rz-table-body {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+.rz-table-body table {
+  width: 100%;
+}
+.width2 {
+  min-width: 350px;
+}
+.chip-span {
+  font-weight: 500;
+}
+.rz-table-paginator {
+  flex: 0 0 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+.table-actions,
+mat-paginator {
+  flex-grow: 1;
+}
+.table-actions {
+  padding: 0 24px;
+}
+.table-actions-dropdown {
+  max-width: 150px;
+}
+.f-menu {
+  display: flex;
+  text-align: left;
+  cursor: pointer;
+  flex-grow: 1;
+  margin-left: 5px;
+  position: relative;
+}
+.filters-controls {
+  padding: 5px 0;
+}
+.filter-control {
+  display: block;
+  padding: 7px 20px;
+  font-weight: 500;
+}
+.f-active {
+  position: absolute;
+  border-radius: 50%;
+  height: 8px;
+  left: 14px;
+  top: 2px;
+  width: 8px;
+}
+.rz-cell,
+td {
+  vertical-align: middle;
+}
+tr th:nth-child(1) {
+  width: 64px !important;
+  max-width: 64px !important;
+  min-width: 64px !important;
+}
+.rz-cell > div {
+  line-height: 1.4;
+}
+.sub-title-cell {
+  flex: 1 0 100%;
+}
+.filter-body {
+  overflow: auto;
+  max-height: 250px;
+}
+.rz-filter-footer {
+  border-top-width: 1px;
+  border-top-style: solid;
+  padding: 10px 20px 2px;
+  text-align: right;
+}
+.row-actions > button {
+  margin-left: auto;
+}
+.filters {
+  display: flex;
+}
+.range-field-flex {
+  display: flex;
+  padding: 15px;
+  width: 320px;
+}
+.range-field-flex .range-control {
+  padding: 10px;
+  max-width: 150px;
+}
+.daterangepicker-filter-field {
+  width: 0;
+  height: 0;
+  position: absolute;
+  overflow: hidden;
+}
+tr.selected {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.no-results-box {
+  position: absolute !important;
+  width: 100% !important;
+  height: 400px !important;
+}
+.cell-info {
+  display: flex;
+  align-items: center;
+}
+.cell-info i {
+  margin-left: 4px;
+  cursor: pointer;
+}
+.filter-checkboxes-container {
+  width: 220px;
+}
+.filter-search {
+  position: absolute;
+  width: 220px;
+  top: 0;
+  left: 0;
+}
+.filter-search input {
+  background-color: transparent !important;
+  outline: 0;
+  border: none;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  height: 35px;
+  color: inherit;
+  font-family: inherit;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #eee;
+}
+.filter-search input:focus {
+  outline: 0;
+}
+.filter-search input::-webkit-input-placeholder {
+  font-weight: 300;
+}
+.filter-checkboxes-list-search {
+  margin-top: 26px;
+}
