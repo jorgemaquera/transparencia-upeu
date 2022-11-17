@@ -11,6 +11,8 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DocumentsData } from 'src/app/core/interfaces/documents_data.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateComponent } from 'src/app/pages/update/update.component';
 
 @Component({
   selector: 'app-documents-table',
@@ -29,7 +31,8 @@ export class DocumentsTableComponent implements OnInit, OnChanges {
 
   constructor(
     public matPaginatorIntl: MatPaginatorIntl,
-    private liveAnnouncer: LiveAnnouncer
+    private liveAnnouncer: LiveAnnouncer,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -55,5 +58,8 @@ export class DocumentsTableComponent implements OnInit, OnChanges {
 
   openLink(link: string): void {
     window.open(link, '_blank');
+  }
+  openDialog() {
+    this.dialog.open(UpdateComponent);
   }
 }

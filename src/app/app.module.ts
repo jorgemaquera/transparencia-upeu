@@ -15,9 +15,22 @@ import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { SharedModule } from './modules/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { UpdateComponent } from './pages/update/update.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, DefaultComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    DefaultComponent,
+    UpdateComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,6 +46,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     provideFunctions(() => getFunctions()),
     AuthModule,
     SharedModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
