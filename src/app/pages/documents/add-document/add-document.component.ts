@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,12 +8,12 @@ import {
   ref,
   Storage,
   uploadBytesResumable,
-  UploadTask,
 } from '@angular/fire/storage';
 import { Subject, takeUntil } from 'rxjs';
-import { DocumentService } from 'src/app/core/services/document.service';
+import { DocumentService } from 'src/app/pages/documents/document.service';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
+import { AREAS, TYPES } from 'src/app/helpers/interfaces';
 
 @Component({
   selector: 'app-add-document',
@@ -35,16 +35,11 @@ export class AddDocumentComponent {
     recipients: new FormControl([] as Array<string>, [Validators.required]),
   });
 
-  types = [
-    { value: 'acta', label: 'Acta' },
-    { value: 'resolucion', label: 'Resolución' },
-    { value: 'acuerdo', label: 'Acuerdo' },
-  ];
+  types = TYPES;
 
-  areas = [
-    { value: 'proyeccion_social', label: 'Proyección Social' },
-    { value: 'investigacion', label: 'Investigación' },
-  ];
+  areas = AREAS;
+
+  maxDate = moment();
 
   file: any = null;
   pdfSrc: any = null;
@@ -105,14 +100,27 @@ export class AddDocumentComponent {
     this.router.navigate(['/documents']);
   }
 
+  firestoreAutoId = (): string => {
+    const CHARS =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    let autoId = '';
+
+    for (let i = 0; i < 20; i++) {
+      autoId += CHARS.charAt(Math.floor(Math.random() * CHARS.length));
+    }
+    return autoId;
+  };
+
   uploadFile() {
-    const storageRef = ref(this.storage, `files/${this.file.name}`);
+    const id = this.firestoreAutoId();
+    const storageRef = ref(this.storage, `documents/${id}.pdf`);
     const uploadTask = uploadBytesResumable(storageRef, this.file);
 
     uploadTask.then(data => {
       getDownloadURL(data.ref).then(async url => {
         const documentData = this.documentForm.getRawValue();
-        await this.documentService.add({
+        await this.documentService.add(id, {
           fileUrl: url,
           name: documentData.name!,
           type: documentData.type!,

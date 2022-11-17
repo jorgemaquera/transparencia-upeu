@@ -47,14 +47,12 @@
               "buildOptimizer": true
             },
             "development": {
-              "optimization": true,
-              "outputHashing": "all",
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"

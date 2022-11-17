@@ -1,0 +1,285 @@
+<div class="container mx-auto">
+  <h4 *ngIf="search.value" class="text-5xl pt-8">
+    {{ total }}
+    {{ total === 1 ? 'resultado encontrado' : 'resultados encontrados' }}
+  </h4>
+  <div class="grid grid-cols-6 my-8 gap-x-8">
+    <div class="col-span-1">
+      <app-documents-filters
+        [years]="years"
+        (onFilter)="setFilters($event)"></app-documents-filters>
+    </div>
+    <div class="col-span-5">
+      <div class="table-container">
+        <div class="rz-data-table">
+          <div
+            class="rz-table"
+            [ngClass]="{ tabsJoined: tabsStyle && tabsStyle == 'joined' }">
+            <div
+              class="data-loading-shade"
+              *ngIf="isLoadingResults || isRateLimitReached">
+              <mat-progress-spinner
+                *ngIf="isLoadingResults"
+                [color]="'accent'"
+                [mode]="'indeterminate'"
+                [diameter]="'50'"
+                value="50"
+                [strokeWidth]="'3'"></mat-progress-spinner>
+              <div class="data-rate-limit-reached" *ngIf="isRateLimitReached">
+                Rate limit has been reached. It will be reset in one minute.
+              </div>
+            </div>
+
+            <div
+              class="rz-table-body-wrapper"
+              [ngStyle]="{ position: 'relative' }">
+              <div class="rz-table-body">
+                <div *ngIf="!dataSource.data.length" class="no-results-box">
+                  <div>
+                    <i class="material-icons">info</i>
+                    <span>No results found</span>
+                  </div>
+                </div>
+                <table
+                  mat-table
+                  [dataSource]="dataSource"
+                  matSort
+                  [matSortActive]="sortActive"
+                  matSortDisableClear
+                  [matSortDirection]="sortDirection">
+                  <!-- Columns -->
+                  <ng-container
+                    *ngFor="let column of columns"
+                    [matColumnDef]="column.key">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      [mat-sort-header]="column.sorting ? column.key : null"
+                      [disabled]="!column.sorting ? true : false"
+                      [ngClass]="{
+                        hidden: column.hidden || !column.display,
+                        width2: column.width == 2
+                      }">
+                      <div class="cell-info">
+                        {{ column.label }}
+                        <i
+                          *ngIf="column.tooltip"
+                          [matTooltip]="column.tooltip"
+                          class="material-icons"
+                          >info</i
+                        >
+                        <div
+                          *ngIf="
+                            column.hasOwnProperty('filters') &&
+                            column.filters &&
+                            column.filters.length
+                          "
+                          class="filters"
+                          (click)="$event.stopPropagation()">
+                          <span
+                            *ngFor="let filter of column.filters"
+                            (click)="
+                              openFilter($event, filter, filterPanel);
+                              $event.stopPropagation()
+                            "
+                            class="f-menu">
+                            <i
+                              class="material-icons"
+                              [matTooltip]="
+                                filter.tooltip ? filter.tooltip : ''
+                              "
+                              >filter_list</i
+                            >
+                            <span
+                              *ngIf="filterFiltered(filter)"
+                              class="f-active"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let row; let x = index"
+                      class="rz-cell {{
+                        column.hidden || !column.display ? 'hidden' : ''
+                      }} {{ column.width === 2 ? 'width2' : '' }}"
+                      [ngClass]="column.class ? column.class : ''">
+                      <span
+                        rz-cell
+                        [rows]="rzRows"
+                        [column]="column"
+                        [index]="x"></span>
+                    </td>
+                  </ng-container>
+                  <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumns; sticky: true"
+                    class="rz-header-row"></tr>
+                  <tr
+                    mat-row
+                    rz-row
+                    #tableRow
+                    *matRowDef="
+                      let row;
+                      columns: displayedColumns;
+                      let x = index
+                    "
+                    [data]="row"
+                    [index]="x"
+                    (contextmenu)="
+                      onRightClick($event, actionsPanel, row, x)
+                    "></tr>
+                </table>
+              </div>
+            </div>
+            <div class="rz-table-paginator">
+              <mat-paginator
+                [length]="total"
+                [pageSizeOptions]="[5, 10, 20, 50]"
+                [pageSize]="searchParams.hitsPerPage"
+                showFirstLastButtons></mat-paginator>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="position: fixed"
+          [style.left]="contextMenuPosition.x"
+          [style.top]="contextMenuPosition.y"
+          #filterPanel="matMenuTrigger"
+          [matMenuTriggerFor]="filterMenu"></div>
+        <mat-menu #filterMenu="matMenu" (closed)="filterClosed($event)">
+          <div
+            *ngIf="currentFilter as filter"
+            (click)="$event.stopPropagation()">
+            <div class="filter-body">
+              <div class="filters-controls">
+                <div
+                  *ngIf="filter.type === 'checkbox'"
+                  class="filter-checkboxes-container">
+                  <div
+                    class="filter-search"
+                    [style.display]="
+                      filter.hasOwnProperty('search') && filter.search
+                        ? 'block'
+                        : 'none'
+                    ">
+                    <input
+                      #searchValueFilter
+                      type="text"
+                      placeholder="search" />
+                  </div>
+                  <div
+                    class="filter-checkboxes-list"
+                    [ngClass]="{
+                      'filter-checkboxes-list-search':
+                        filter.hasOwnProperty('search') && filter.search
+                    }">
+                    <mat-checkbox
+                      *ngFor="
+                        let choice of getFilteredChoices(
+                          searchValueFilter.value,
+                          filter
+                        )
+                      "
+                      [formControl]="choice.controls.selected"
+                      (change)="runFilters()"
+                      class="filter-control"
+                      >{{ choice.value.label }}</mat-checkbox
+                    >
+                  </div>
+                </div>
+                <div *ngIf="filter.type === 'range'" class="range-field-flex">
+                  <mat-form-field appearance="fill" [style.width]="'120px'">
+                    <mat-label>Min</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      [formControl]="filter.min"
+                      autocomplete="off" />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" [style.width]="'120px'">
+                    <mat-label>Max</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      [formControl]="filter.max"
+                      autocomplete="off" />
+                  </mat-form-field>
+                </div>
+                <div
+                  *ngIf="filter.type === 'daterange'"
+                  class="range-field-flex">
+                  <mat-form-field appearance="fill">
+                    <mat-label>From - To</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input
+                        matStartDate
+                        [formControl]="filter.from"
+                        placeholder="Start date" />
+                      <input
+                        matEndDate
+                        [formControl]="filter.to"
+                        placeholder="End date" />
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="rz-filter-footer">
+              <button
+                mat-button
+                (click)="clearFiltersCol(filter); filterPanel.closeMenu()"
+                [disabled]="
+                  filter.hasOwnProperty('canFilter') && !filter.canFilter
+                    ? true
+                    : false
+                ">
+                Clear Filters</button
+              >&nbsp;&nbsp;
+              <button
+                mat-stroked-button
+                (click)="runFilters(); filterPanel.closeMenu()"
+                [disabled]="
+                  filter.hasOwnProperty('canFilter') && !filter.canFilter
+                    ? true
+                    : false
+                ">
+                Apply
+              </button>
+            </div>
+          </div>
+        </mat-menu>
+
+        <div
+          style="position: fixed"
+          [style.left]="contextMenuPosition.x"
+          [style.top]="contextMenuPosition.y"
+          #actionsPanel="matMenuTrigger"
+          [matMenuTriggerFor]="actionsMenu"></div>
+        <mat-menu #actionsMenu="matMenu" (closed)="actionsClosed($event)">
+          <div *ngIf="rowActions.length" class="row-actions">
+            <div *ngIf="rowSelected as row">
+              <button
+                *ngFor="let action of rowActions"
+                mat-menu-item
+                (click)="runRowAction(action, row)"
+                [disabled]="
+                  !getRowActionPermissions(action, row, rowSelectedIndex)
+                ">
+                <span>
+                  <mat-icon>{{ action.icon }}</mat-icon>
+                  <b>{{ action.label }}</b>
+                </span>
+              </button>
+            </div>
+          </div>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</div>

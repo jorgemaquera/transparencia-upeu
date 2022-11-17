@@ -1,17 +1,39 @@
 import { NgModule } from '@angular/core';
-import { DocumentsTableComponent } from 'src/app/components/documents/documents-table/documents-table.component';
-import { DocumentsFiltersComponent } from 'src/app/components/documents/documents-filters/documents-filters.component';
-import { MaterialModule } from './material.module';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { RzAlgoliaFunctionsModule } from '@gabrielcosi/rz-algolia-functions';
+import { environment } from 'src/environments/environment';
+
+import { RzCell } from '../directives/rz-cell.directive';
+import { RzRow } from '../directives/rz-row.directive';
 
 @NgModule({
-  declarations: [DocumentsTableComponent, DocumentsFiltersComponent],
-  imports: [CommonModule, MaterialModule],
-  exports: [
-    DocumentsTableComponent,
-    DocumentsFiltersComponent,
+  declarations: [RzCell, RzRow],
+  imports: [
     CommonModule,
-    MaterialModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    RzAlgoliaFunctionsModule.forRoot({
+      apiId: environment.algolia.appId,
+      apiKey: environment.algolia.apiKey,
+    }),
+  ],
+  exports: [
+    CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    RzAlgoliaFunctionsModule,
+    RzCell,
+    RzRow,
   ],
 })
 export class SharedModule {}

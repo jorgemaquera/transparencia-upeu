@@ -200,6 +200,11 @@ tr.mat-header-row {
   min-width: 159px !important;
 }
 
+.mat-table tr th:first-child,
+.mat-table tr td:first-child {
+  min-width: 360px;
+}
+
 .mat-table tr th:not(:first-child),
 .mat-table tr td:not(:first-child) {
   min-width: 100px;

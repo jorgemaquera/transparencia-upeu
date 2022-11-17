@@ -37,7 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // import { DragDropModule } from '@angular/cdk/drag-drop';
 // import { MomentTimezoneDateAdapterModule } from '../helpers/moment-timezone-date-adapter';
 
-// import { LoadingShapeComponent } from '../app.component';
+import { LoadingShapeComponent } from '../app.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
 
@@ -81,9 +81,7 @@ import { MatTreeModule } from '@angular/material/tree';
     // MomentTimezoneDateAdapterModule,
     // DragDropModule
   ],
-  // declarations: [
-  //     LoadingShapeComponent
-  // ],
+  declarations: [LoadingShapeComponent],
   exports: [
     MatGridListModule,
     MatButtonModule,
@@ -123,7 +121,7 @@ import { MatTreeModule } from '@angular/material/tree';
     // MomentTimezoneDateAdapterModule,
     // DragDropModule,
 
-    // LoadingShapeComponent
+    LoadingShapeComponent,
   ],
   entryComponents: [],
   providers: [
