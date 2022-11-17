@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DocumentsComponent } from './documents.component';
 import { AddDocumentComponent } from './add-document/add-document.component';
+import { UpdateComponent } from './update/update.component';
 @NgModule({
   imports: [
     MaterialModule,
@@ -19,7 +20,7 @@ import { AddDocumentComponent } from './add-document/add-document.component';
     ReactiveFormsModule,
     MatMomentDateModule,
   ],
-  declarations: [DocumentsComponent, AddDocumentComponent],
+  declarations: [DocumentsComponent, AddDocumentComponent, UpdateComponent],
   exports: [],
 
   providers: [],
