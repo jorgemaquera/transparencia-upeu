@@ -1,0 +1,110 @@
+.mat-dialog-container {
+  border-radius: 25px;
+}
+.mat-dialog-content {
+  width: 450px;
+  height: 900px;
+  border-radius: 25px;
+}
+.mat-dialog-title {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  color: #1a365f;
+  font-family: poppins;
+  font-size: 29px;
+  margin-bottom: 10px;
+}
+.mat-select {
+  font-family: poppins;
+  font-size: 13.5px;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+.mat-checkbox-indeterminate .mat-checkbox-background {
+  background-color: #1a365f !important;
+  border-radius: 4px !important;
+  border-width: 3px !important;
+}
+
+::ng-deep
+  .mat-checkbox:not(.mat-checkbox-disabled)
+  .mat-checkbox-ripple
+  .mat-ripple-element {
+  background-color: #1a365f !important;
+  border-radius: 4px !important;
+  border-width: 3px !important;
+}
+
+::ng-deep .mat-checkbox-frame {
+  border-color: #b0b1b6;
+  border-radius: 4px !important;
+  border-width: 3px !important;
+}
+
+#docname {
+  width: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+  justify-content: center;
+  border-color: #1a365f;
+  font-family: poppins;
+}
+
+#btn-subir {
+  background-color: #f1bc00;
+  font-family: poppins;
+  font-size: 10px;
+  color: white;
+  width: 125.4px;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+#btn-cancelar {
+  border-color: #f82a2a;
+  font-family: poppins;
+  font-size: 10px;
+  color: #f82a2a;
+  width: 125.4px;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+#btn-guardar {
+  background-color: #1a365f;
+  font-family: poppins;
+  font-size: 10px;
+  color: white;
+  width: 125.4px;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+}
+.filaone {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.chilone {
+  display: grid;
+  width: 50%;
+}
+.separate {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  justify-content: center;
+}
+
+label {
+  color: #1a365f;
+  font-weight: 500;
+}

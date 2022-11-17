@@ -1,0 +1,69 @@
+<h1 mat-dialog-title><strong>Modificar Documento</strong></h1>
+<mat-dialog-content>
+  <form class="">
+    <div class="uno">
+      <label>Nombre del Documento :</label>
+      <mat-form-field appearance="outline" id="docname">
+        <input matInput placeholder="Ingrese el nombre del documento" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" class="filaone">
+      <div class="chilone">
+        <label>Tipo de Documento :</label>
+        <mat-form-field appearance="outline" Placeholder="Seleccionar">
+          <mat-select placeholder="Seleccionar">
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="chilone">
+        <label>Codigo :</label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Ingresar código" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" class="filaone">
+      <div class="chilone">
+        <label>Fecha de Creación :</label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="DD/MM/YYYY" [matDatepicker]="picker" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="chilone">
+        <label>Area :</label>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Seleccionar" floatlLabel="never">
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div>
+        <mat-checkbox>Documento despasado</mat-checkbox>
+      </div>
+
+      <br />
+    </div>
+    <div>
+      <button mat-raised-button id="btn-subir">SUBIR DOCUMENTO</button>
+    </div>
+    <br />
+    <div class="separate">
+      <button mat-stroked-button id="btn-cancelar">CANCELAR</button>
+
+      <button mat-raised-button id="btn-guardar">GUARDAR</button>
+    </div>
+  </form>
+</mat-dialog-content>
