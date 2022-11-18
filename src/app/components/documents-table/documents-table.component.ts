@@ -126,17 +126,17 @@ export class DocumentsTableComponent
                 key: filter.name,
                 operator: 'BETWEEN',
                 from: moment(
-                  `01/01/${filter.values[0]}`,
+                  `01/01/${filter.values.length - 1}`,
                   'DD/MM/YYYY'
                 ).valueOf(),
                 to:
                   filter.values.length > 1
                     ? moment(
-                        `31/12/${filter.values[0]}`,
+                        `31/12/${filter.values.length - 1}`,
                         'DD/MM/YYYY'
                       ).valueOf()
                     : moment(
-                        `31/12/${filter.values[filter.values.length - 1]}`,
+                        `31/12/${filter.values[0]}`,
                         'DD/MM/YYYY'
                       ).valueOf(),
               },

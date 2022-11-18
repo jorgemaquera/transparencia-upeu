@@ -2,14 +2,7 @@ import { Component } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {
-  getDownloadURL,
-  percentage,
-  ref,
-  Storage,
-  uploadBytesResumable,
-} from '@angular/fire/storage';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 import { DocumentService } from 'src/app/pages/documents/document.service';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
@@ -48,7 +41,6 @@ export class AddDocumentComponent {
   private unsubscribe = new Subject<void>();
 
   constructor(
-    private storage: Storage,
     private documentService: DocumentService,
     private router: Router
   ) {}
@@ -100,51 +92,30 @@ export class AddDocumentComponent {
     this.router.navigate(['/documents']);
   }
 
-  firestoreAutoId = (): string => {
-    const CHARS =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  async save() {
+    if (this.documentForm.valid) {
+      const id = this.documentService.firestoreAutoId();
 
-    let autoId = '';
-
-    for (let i = 0; i < 20; i++) {
-      autoId += CHARS.charAt(Math.floor(Math.random() * CHARS.length));
+      const file = await this.documentService.uploadFile(this.file, id);
+      const documentData = this.documentForm.getRawValue();
+      await this.documentService.add(id, {
+        file,
+        name: documentData.name!,
+        type: documentData.type!,
+        code: documentData.code!,
+        creationDate: documentData.creationDate!.toDate(),
+        area: documentData.area!,
+        deprecated: false,
+      });
+      if (documentData.shouldNotify) {
+        this.documentService.notifyInterestedParties(
+          documentData.recipients!,
+          documentData.name!,
+          documentData.creationDate!
+        );
+      }
+      this.router.navigate(['/documents']);
     }
-    return autoId;
-  };
-
-  uploadFile() {
-    const id = this.firestoreAutoId();
-    const storageRef = ref(this.storage, `documents/${id}.pdf`);
-    const uploadTask = uploadBytesResumable(storageRef, this.file);
-
-    uploadTask.then(data => {
-      getDownloadURL(data.ref).then(async url => {
-        const documentData = this.documentForm.getRawValue();
-        await this.documentService.add(id, {
-          fileUrl: url,
-          name: documentData.name!,
-          type: documentData.type!,
-          code: documentData.code!,
-          creationDate: documentData.creationDate!.toDate(),
-          area: documentData.area!,
-          deprecated: false,
-        });
-        if (documentData.shouldNotify) {
-          this.documentService.notifyInterestedParties(
-            documentData.recipients!,
-            documentData.name!,
-            documentData.creationDate!
-          );
-        }
-        this.router.navigate(['/documents']);
-      });
-    });
-    // Percentage observer
-    percentage(uploadTask)
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(percentage => {
-        this.uploadPercent = percentage.progress;
-      });
   }
 
   ngOnDestroy() {

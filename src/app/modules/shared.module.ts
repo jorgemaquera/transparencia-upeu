@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 
 import { RzCell } from '../directives/rz-cell.directive';
 import { RzRow } from '../directives/rz-row.directive';
+import { RzComponentsModule } from './rz-components.module';
 
 @NgModule({
   declarations: [RzCell, RzRow],
@@ -19,6 +20,7 @@ import { RzRow } from '../directives/rz-row.directive';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    RzComponentsModule,
     RzAlgoliaFunctionsModule.forRoot({
       apiId: environment.algolia.appId,
       apiKey: environment.algolia.apiKey,
@@ -31,6 +33,7 @@ import { RzRow } from '../directives/rz-row.directive';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    RzComponentsModule,
     RzAlgoliaFunctionsModule,
     RzCell,
     RzRow,
