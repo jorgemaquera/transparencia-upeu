@@ -36,7 +36,7 @@ export class AddDocumentComponent {
 
   file: any = null;
   pdfSrc: any = null;
-  uploadPercent: any;
+  uploading: boolean = false;
 
   private unsubscribe = new Subject<void>();
 
@@ -94,6 +94,7 @@ export class AddDocumentComponent {
 
   async save() {
     if (this.documentForm.valid) {
+      this.uploading = true;
       const id = this.documentService.firestoreAutoId();
 
       const file = await this.documentService.uploadFile(this.file, id);
