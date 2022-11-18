@@ -58,6 +58,8 @@ export class DocumentsTableComponent
   @Input() search: FormControl;
 
   @Output() onFilter = new EventEmitter();
+  @Output() onRefresh = new EventEmitter();
+
   @Output() rowAction = new EventEmitter();
 
   sideFilters: any[] = [];
@@ -72,6 +74,8 @@ export class DocumentsTableComponent
   contextMenuPosition = { x: '0px', y: '0px' };
   displayedColumns: Array<string> = [];
   years: number[] = [];
+  table: any;
+  loadTable = new BehaviorSubject<boolean>(true);
 
   @ViewChild('filterPanel', { static: false }) filterMenu: MatMenuTrigger;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -87,7 +91,9 @@ export class DocumentsTableComponent
     this.dataSource = new MatTableDataSource();
   }
   ngAfterViewInit(): void {
-    this.getData();
+    this.loadTable.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+      this.getData();
+    });
   }
 
   ngOnInit() {
@@ -438,6 +444,21 @@ export class DocumentsTableComponent
       }
     });
     return years.sort((a, b) => b - a);
+  }
+
+  removeFromTable(row: any) {
+    setTimeout(() => {
+      this.dataSource.data = this.dataSource.data.filter(
+        (r: any) => r.id !== row.data.id
+      );
+    }, 100);
+  }
+
+  refreshTable() {
+    setTimeout(() => {
+      this.loadTable.next(true);
+      this.onRefresh.emit();
+    }, 3000);
   }
 
   ngOnDestroy() {

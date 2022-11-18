@@ -11,7 +11,7 @@
 
 //Custom typography
 $custom-typography: mat.define-typography-config(
-  $font-family: 'Nunito, sans-serif',
+  $font-family: 'Poppins, sans-serif;',
   $display-4: mat.define-typography-level(112px, 112px, 600),
   $display-3: mat.define-typography-level(56px, 56px, 600),
   $display-2: mat.define-typography-level(45px, 48px, 600),

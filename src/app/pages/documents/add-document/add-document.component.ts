@@ -93,30 +93,28 @@ export class AddDocumentComponent {
   }
 
   async save() {
-    if (this.documentForm.valid) {
-      this.uploading = true;
-      const id = this.documentService.firestoreAutoId();
+    this.uploading = true;
+    const id = this.documentService.firestoreAutoId();
 
-      const file = await this.documentService.uploadFile(this.file, id);
-      const documentData = this.documentForm.getRawValue();
-      await this.documentService.add(id, {
-        file,
-        name: documentData.name!,
-        type: documentData.type!,
-        code: documentData.code!,
-        creationDate: documentData.creationDate!.toDate(),
-        area: documentData.area!,
-        deprecated: false,
-      });
-      if (documentData.shouldNotify) {
-        this.documentService.notifyInterestedParties(
-          documentData.recipients!,
-          documentData.name!,
-          documentData.creationDate!
-        );
-      }
-      this.router.navigate(['/documents']);
+    const file = await this.documentService.uploadFile(this.file, id);
+    const documentData = this.documentForm.getRawValue();
+    await this.documentService.add(id, {
+      file,
+      name: documentData.name!,
+      type: documentData.type!,
+      code: documentData.code!,
+      creationDate: documentData.creationDate!.toDate(),
+      area: documentData.area!,
+      deprecated: false,
+    });
+    if (documentData.shouldNotify) {
+      this.documentService.notifyInterestedParties(
+        documentData.recipients!,
+        documentData.name!,
+        documentData.creationDate!
+      );
     }
+    this.router.navigate(['/documents']);
   }
 
   ngOnDestroy() {

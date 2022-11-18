@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { RzAlgoliaService } from '@gabrielcosi/rz-algolia-functions';
 import { RzComponentsService } from '@gabrielcosi/rz-components';
+import { RzFirestoreService } from '@gabrielcosi/rz-firestore-functions';
 import { RzHelperSnippetsService } from '@gabrielcosi/rz-helper-snippets';
 import * as moment from 'moment-timezone';
+import { debounceTime, Subject, takeUntil } from 'rxjs';
+import { DocumentsTableComponent } from 'src/app/components/documents-table/documents-table.component';
 import { RzRow } from 'src/app/directives/rz-row.directive';
 import { AREAS, TYPES } from 'src/app/helpers/interfaces';
 import { DocumentService } from './document.service';
@@ -25,18 +29,24 @@ export class DocumentsComponent implements OnInit {
   rowActions: any[] = [];
 
   search: FormControl = new FormControl();
+  @ViewChild(DocumentsTableComponent) pageTable: DocumentsTableComponent;
+
+  private unsubscribe = new Subject<void>();
 
   constructor(
     private functions: RzHelperSnippetsService,
     private router: Router,
     private sharedComponents: RzComponentsService,
-    private documentService: DocumentService
+    private documentService: DocumentService,
+    private firestoreService: RzFirestoreService,
+    private algoliaService: RzAlgoliaService
   ) {}
 
   ngOnInit(): void {
     this.setColumns();
     this.setFilters({ deprecated: false });
     this.setRowActions();
+    this.listenTable();
   }
 
   setFilters({ deprecated = false }) {
@@ -254,6 +264,7 @@ export class DocumentsComponent implements OnInit {
                   'Documento actualizado!',
                   'success'
                 );
+                this.pageTable.refreshTable();
                 return true;
               } catch (e) {
                 this.sharedComponents.openSnackBar(e, 'error');
@@ -271,12 +282,42 @@ export class DocumentsComponent implements OnInit {
         canActivate: (row: RzRow) => {
           return true;
         },
-        action: (row: RzRow) => {},
+        action: (row: RzRow) => {
+          this.sharedComponents
+            .openConfirmDialog('¿Está seguro que desea eliminar el documento?')
+            .afterClosed()
+            .subscribe(data => {
+              if (data === true) {
+                this.pageTable.removeFromTable(row);
+                this.documentService.delete(row.data.id);
+              }
+            });
+        },
       },
     ];
   }
 
   addDocument() {
     this.router.navigate(['/documents/add']);
+  }
+
+  listenTable() {
+    this.firestoreService
+      .getCollection({ collection: 'documents' })
+      .pipe(debounceTime(5000), takeUntil(this.unsubscribe))
+      .subscribe(async () => {
+        if (this.pageTable) {
+          const args = this.pageTable.buildParams();
+
+          const response: any = await this.algoliaService.search(args);
+
+          this.pageTable.dataSource.data = response.hits;
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }
