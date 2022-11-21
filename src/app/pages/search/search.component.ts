@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RzHelperSnippetsService } from '@gabrielcosi/rz-helper-snippets';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Sort } from '@angular/material/sort';
-import { DocumentsData } from '../documents/documents';
+import { DocumentData } from '../documents/documents';
 import { AREAS, TYPES } from 'src/app/helpers/interfaces';
 import { RzRow } from 'src/app/directives/rz-row.directive';
 
@@ -52,11 +52,11 @@ export class SearchComponent implements OnInit {
         display: true,
         sorting: false,
         key: 'name',
-        content: (document: DocumentsData) => {
+        content: (document: DocumentData) => {
           return `<b class="h6 pointer">${document.name}</b>`;
         },
         onClick: (event: any, row: any, cell: any) => {
-          window.open(row.data.fileUrl, '_blank');
+          window.open(row.data.file.downloadURL, '_blank');
         },
       },
       {
@@ -74,7 +74,7 @@ export class SearchComponent implements OnInit {
           },
         ],
         canActivate: () => true,
-        content: (document: DocumentsData) => {
+        content: (document: DocumentData) => {
           return `<span>${
             document.creationDate
               ? this.functions.dateFormat(
@@ -91,7 +91,7 @@ export class SearchComponent implements OnInit {
         key: 'type',
         sorting: false,
         canActivate: () => true,
-        content: (document: DocumentsData) => {
+        content: (document: DocumentData) => {
           return TYPES.find(type => type.value === document.type)?.label;
         },
         filters: [
@@ -118,7 +118,7 @@ export class SearchComponent implements OnInit {
         key: 'area',
         sorting: false,
         canActivate: () => true,
-        content: (document: DocumentsData) => {
+        content: (document: DocumentData) => {
           return AREAS.find(area => area.value === document.area)?.label;
         },
       },
@@ -134,7 +134,7 @@ export class SearchComponent implements OnInit {
           return true;
         },
         action: (row: RzRow) => {
-          window.open(row.data.fileUrl, '_blank');
+          window.open(row.data.file.downloadURL, '_blank');
         },
       },
     ];

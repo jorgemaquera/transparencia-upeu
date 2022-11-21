@@ -1,5 +1,9 @@
-export interface DocumentsData {
-  fileUrl: string;
+export interface DocumentData {
+  file: {
+    downloadURL: string;
+    filename: string;
+    path: string;
+  };
   name: string;
   type: string;
   creationDate: Date;

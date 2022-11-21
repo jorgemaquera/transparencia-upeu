@@ -113,23 +113,17 @@
         style="width: 100%; height: 50vh">
       </pdf-viewer>
       <div *ngIf="!pdfSrc">Sin archivo seleccionado</div>
-      <mat-progress-bar
-        *ngIf="uploadPercent && uploadPercent < 100"
-        class="mt-4"
-        mode="determinate"
-        [value]="uploadPercent"></mat-progress-bar>
     </mat-card>
   </div>
   <div class="col-span-3 flex justify-between">
     <button
-      [disabled]="uploadPercent"
+      [disabled]="uploading"
       mat-stroked-button
       (click)="cancel()"
       color="primary">
       Cancelar
     </button>
-    <button mat-raised-button color="primary" (click)="uploadFile()">
-      Publicar
-    </button>
+    [disabled]="uploading"
+    <button mat-raised-button color="primary" (click)="save()">Publicar</button>
   </div>
 </div>

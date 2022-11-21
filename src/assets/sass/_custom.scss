@@ -1,0 +1,17 @@
+.dialog-header {
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  line-height: 1.21;
+  font-weight: 700;
+}
+
+.dialog-content {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.dialog-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
