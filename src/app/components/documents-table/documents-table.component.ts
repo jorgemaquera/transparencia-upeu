@@ -120,12 +120,11 @@ export class DocumentsTableComponent
       (this.sideFilters = filters.map(filter =>
         filter.type === 'checkbox'
           ? [
-              {
+              ...filter.values.map((f: any) => ({
                 key: filter.name,
-                operator: filter.values.length > 1 ? 'IN' : '==',
-                value:
-                  filter.values.length > 1 ? filter.values : filter.values[0],
-              },
+                operator: '==',
+                value: f,
+              })),
             ]
           : [
               {
@@ -466,3 +465,4 @@ export class DocumentsTableComponent
     this.unsubscribe.complete();
   }
 }
+
