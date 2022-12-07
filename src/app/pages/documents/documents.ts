@@ -1,4 +1,5 @@
 export interface DocumentData {
+  id?: string;
   file: {
     downloadURL: string;
     filename: string;

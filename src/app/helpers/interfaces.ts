@@ -17,12 +17,25 @@ export interface LoginData {
 }
 
 export const AREAS = [
-  { value: 'proyeccion_social', label: 'Proyección Social' },
-  { value: 'investigacion', label: 'Investigación' },
+  { value: 'tutoria_academica', label: 'Tutoría académica' },
+  { value: 'investigacion_e_innovacion', label: 'Investigación e innovación' },
+  { value: 'vinculacion_con_el_medio', label: 'Vinculación con el medio' },
+  { value: 'formacion_integral', label: 'Formación integral' },
+  {
+    value: 'plan_maestro_de_desarrollo_espiritual',
+    label: 'Plan maestro de desarrollo espiritual',
+  },
+  {
+    value: 'practicas_pre_profesionales',
+    label: 'Prácticas Pre-Profesionales',
+  },
+  {
+    value: 'diseno_y_evaluacion_curricular',
+    label: 'Diseño y evaluación curricular',
+  },
 ];
 
 export const TYPES = [
   { value: 'acta', label: 'Acta' },
   { value: 'resolucion', label: 'Resolución' },
-  { value: 'acuerdo', label: 'Acuerdo' },
 ];
