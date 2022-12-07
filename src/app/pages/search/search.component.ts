@@ -94,23 +94,6 @@ export class SearchComponent implements OnInit {
         content: (document: DocumentData) => {
           return TYPES.find(type => type.value === document.type)?.label;
         },
-        filters: [
-          {
-            type: 'checkbox',
-            key: 'type',
-            operator: '==',
-            choices: this._fb.array([
-              ...TYPES.map(l =>
-                this._fb.group({
-                  id: l.value,
-                  value: l.value,
-                  label: l.label,
-                  selected: false,
-                })
-              ),
-            ]),
-          },
-        ],
       },
       {
         label: 'Area',
@@ -140,3 +123,4 @@ export class SearchComponent implements OnInit {
     ];
   }
 }
+

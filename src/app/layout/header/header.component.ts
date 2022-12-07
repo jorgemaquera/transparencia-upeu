@@ -1,4 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +8,11 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    public authService: AuthService,
+    private router: Router
+  ) {}
 
   currentTheme = 'light-theme';
 
@@ -18,4 +24,10 @@ export class HeaderComponent {
     this.renderer.removeClass(document.body, this.currentTheme);
     this.renderer.addClass(document.body, theme);
   }
+
+  logOut() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
+

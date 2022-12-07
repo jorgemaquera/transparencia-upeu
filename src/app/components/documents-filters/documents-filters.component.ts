@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { FormArray } from '@angular/forms';
 import { RzHelperSnippetsService } from '@gabrielcosi/rz-helper-snippets';
+import { AuthService } from 'src/app/auth/auth.service';
 import { AREAS, TYPES } from 'src/app/helpers/interfaces';
 
 @Component({
@@ -26,7 +27,10 @@ export class DocumentsFiltersComponent implements OnInit, OnChanges {
 
   @Output() onFilter = new EventEmitter();
 
-  constructor(private functions: RzHelperSnippetsService) {}
+  constructor(
+    private functions: RzHelperSnippetsService,
+    private authService: AuthService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     const form = [
@@ -66,6 +70,16 @@ export class DocumentsFiltersComponent implements OnInit, OnChanges {
           };
         }),
       },
+      {
+        name: 'deprecated',
+        label: 'Obsoleto',
+        type: 'checkbox',
+        sections: [
+          { name: true, label: 'Sí', checked: false },
+          { name: false, label: 'No', checked: false },
+        ],
+        admin: true,
+      },
     ];
 
     this.functions.setForm(this.filtersForm, form);
@@ -95,4 +109,10 @@ export class DocumentsFiltersComponent implements OnInit, OnChanges {
 
     this.onFilter.emit(checkedFilters);
   }
+
+  checkPermissions(filter: any) {
+    const isAuth = this.authService.authenticate();
+    return filter.admin ? isAuth : true;
+  }
 }
+

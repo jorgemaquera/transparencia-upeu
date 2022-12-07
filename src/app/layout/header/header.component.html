@@ -9,8 +9,18 @@
         </div>
       </div>
     </div>
-    <button mat-icon-button color="accent" (click)="changeTheme()">
-      <mat-icon>brightness_4</mat-icon>
-    </button>
+    <div>
+      <button mat-icon-button color="accent" (click)="changeTheme()">
+        <mat-icon>brightness_4</mat-icon>
+      </button>
+      <button
+        *ngIf="authService.isLoggedIn"
+        mat-icon-button
+        color="accent"
+        (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
   </div>
 </div>
+

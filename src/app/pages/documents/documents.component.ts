@@ -276,24 +276,24 @@ export class DocumentsComponent implements OnInit {
           this.sharedComponents.openFormModal({ data });
         },
       },
-      {
-        label: 'Delete',
-        icon: 'delete',
-        canActivate: (row: RzRow) => {
-          return true;
-        },
-        action: (row: RzRow) => {
-          this.sharedComponents
-            .openConfirmDialog('¿Está seguro que desea eliminar el documento?')
-            .afterClosed()
-            .subscribe(data => {
-              if (data === true) {
-                this.pageTable.removeFromTable(row);
-                this.documentService.delete(row.data.id);
-              }
-            });
-        },
-      },
+      // {
+      //   label: 'Delete',
+      //   icon: 'delete',
+      //   canActivate: (row: RzRow) => {
+      //     return true;
+      //   },
+      //   action: (row: RzRow) => {
+      //     this.sharedComponents
+      //       .openConfirmDialog('¿Está seguro que desea eliminar el documento?')
+      //       .afterClosed()
+      //       .subscribe(data => {
+      //         if (data === true) {
+      //           this.pageTable.removeFromTable(row);
+      //           this.documentService.delete(row.data.id);
+      //         }
+      //       });
+      //   },
+      // },
     ];
   }
 
@@ -321,3 +321,4 @@ export class DocumentsComponent implements OnInit {
     this.unsubscribe.complete();
   }
 }
+

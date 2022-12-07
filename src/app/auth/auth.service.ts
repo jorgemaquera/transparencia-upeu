@@ -16,6 +16,8 @@ import { LoginData } from '../helpers/interfaces';
 export class AuthService {
   constructor(private auth: Auth, private router: Router) {}
 
+  isLoggedIn = false;
+
   login({ email, password }: LoginData) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
@@ -28,6 +30,7 @@ export class AuthService {
     return authState(this.auth).pipe(
       map(auth => {
         if (auth != null) {
+          this.isLoggedIn = true;
           return true;
         }
         this.router.navigate(['/login']);
@@ -36,3 +39,4 @@ export class AuthService {
     );
   }
 }
+

@@ -3,20 +3,22 @@
   <ng-container
     *ngFor="let sectionGroup of filtersForm.controls; let i = index"
     [formGroupName]="i">
-    <h6 class="text-xl">{{ sectionGroup.value.label }}</h6>
-    <ul>
-      <li
-        *ngFor="
-          let subSectionGroup of sectionGroup.get('sections').controls;
-          let j = index
-        ">
-        <mat-checkbox
-          [formControl]="subSectionGroup.get('checked')"
-          class="text-base"
-          >{{ subSectionGroup.value.label }}</mat-checkbox
-        >
-      </li>
-    </ul>
+    <ng-container *ngIf="checkPermissions(sectionGroup.value)">
+      <h6 class="text-xl">{{ sectionGroup.value.label }}</h6>
+      <ul>
+        <li
+          *ngFor="
+            let subSectionGroup of sectionGroup.get('sections').controls;
+            let j = index
+          ">
+          <mat-checkbox
+            [formControl]="subSectionGroup.get('checked')"
+            class="text-base"
+            >{{ subSectionGroup.value.label }}</mat-checkbox
+          >
+        </li>
+      </ul>
+    </ng-container>
   </ng-container>
   <button
     mat-flat-button
@@ -26,3 +28,4 @@
     Filtrar
   </button>
 </form>
+
