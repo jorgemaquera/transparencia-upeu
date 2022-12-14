@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 // import 'mousetrap';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
@@ -126,6 +128,8 @@ import { MatTreeModule } from '@angular/material/tree';
   entryComponents: [],
   providers: [
     // { provide: MAT_TABS_CONFIG, useValue: { animationDuration: '0ms' } }
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
   ],
 })
 export class MaterialModule {}
+

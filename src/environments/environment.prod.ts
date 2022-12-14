@@ -9,4 +9,9 @@ export const environment = {
     measurementId: 'G-4FMW9QTFEN',
   },
   production: true,
+  algolia: {
+    appId: 'KNPR9UGH8Z',
+    apiKey: 'bc5b517b7ed40bc31da6b400a78e072a',
+  },
 };
+
