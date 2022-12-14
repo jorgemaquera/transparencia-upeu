@@ -1,4 +1,4 @@
-<div class="container">
+<div class="login-container">
   <div class="login-form">
     <img src="https://upeu.edu.pe/wp-content/uploads/2022/03/04.png" alt="" />
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -32,7 +32,14 @@
           La contraseña es requerida.
         </div>
       </div>
-      <button [disabled]="form.invalid" type="submit">INICIAR SESIÓN</button>
+      <button
+        mat-flat-button
+        color="accent"
+        [disabled]="form.invalid"
+        type="submit">
+        INICIAR SESIÓN
+      </button>
     </form>
   </div>
 </div>
+

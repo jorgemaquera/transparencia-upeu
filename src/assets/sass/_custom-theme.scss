@@ -12,6 +12,7 @@
 @import 'skins/purple';
 @import 'skins/fuxia';
 @import 'skins/spaceblue';
+@import 'skins/yellow';
 
 @mixin light-theme($theme) {
   $foreground: map-get($theme, foreground);
@@ -1406,7 +1407,7 @@
   }
 
   form {
-    background-color: mat.get-color-from-palette($background, background);
+    background-color: mat.get-color-from-palette($foreground, background);
   }
 
   input:not(.mat-input-element):not(.ni-search-input):not(.mat-date-range-input-inner),
@@ -2612,3 +2613,4 @@
     background-color: mat.get-color-from-palette($primary, 500) !important;
   }
 }
+

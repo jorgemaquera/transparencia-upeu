@@ -1,4 +1,4 @@
-.container {
+.login-container {
   width: 100vw;
   height: 100vh;
   background: white;
@@ -32,19 +32,6 @@
   margin-bottom: 10px;
 }
 
-.login-form button {
-  background: #f1bc00;
-  border-radius: 10px;
-  border: none;
-  padding: 10px;
-  color: white;
-}
-
-.login-form button:disabled {
-  background: #f1bc00;
-  opacity: 0.5;
-}
-
 .login-form input.invalid {
   border: 2px solid #f44336;
 }
@@ -57,3 +44,4 @@
   margin-bottom: 10px;
   text-align: center;
 }
+

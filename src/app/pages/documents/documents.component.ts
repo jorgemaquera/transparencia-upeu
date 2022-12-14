@@ -157,7 +157,7 @@ export class DocumentsComponent implements OnInit {
         },
       },
       {
-        label: 'Update',
+        label: 'Editar',
         icon: 'update',
         canActivate: (row: RzRow) => {
           return true;

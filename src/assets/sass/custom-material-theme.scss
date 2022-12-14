@@ -77,6 +77,10 @@ $skins: (
     primary: $main-red,
     accent: $accent-red,
   ),
+  yellow-skin: (
+    primary: $main-yellow,
+    accent: $accent-yellow,
+  ),
 );
 
 @function create-theme(
@@ -141,3 +145,4 @@ $skins: (
     }
   }
 }
+

@@ -105,6 +105,16 @@ export class SearchComponent implements OnInit {
           return AREAS.find(area => area.value === document.area)?.label;
         },
       },
+      {
+        label: 'Código',
+        display: true,
+        key: 'code',
+        sorting: false,
+        canActivate: () => true,
+        content: (document: DocumentData) => {
+          return document.code;
+        },
+      },
     ];
   }
 

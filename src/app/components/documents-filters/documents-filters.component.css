@@ -36,3 +36,11 @@ li {
   font-size: 20px;
   color: #fff;
 }
+
+/deep/ .mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+/deep/ .mat-checkbox-inner-container {
+  margin-top: 3px !important;
+}
